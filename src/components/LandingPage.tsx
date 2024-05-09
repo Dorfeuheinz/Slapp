@@ -1,16 +1,16 @@
 import React from "react";
-import "components/landingPage.css";
-import Dashboard from "components/Sidebar";
+import Sidebar from "containers/Sidebar";
 import Navbar from "components/Navbar";
+
 
 export default function LandingPage() {
     return(
         <>
         <Navbar />
-        
+
         <section className="dashboardhome-section">
         <div className="dasboard-section-1">    
-        <Dashboard /> 
+        <Sidebar /> 
         <div className="row-div">   
         <div className="row">
 		<div className="server-div1">

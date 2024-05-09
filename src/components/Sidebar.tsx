@@ -1,26 +1,28 @@
 import React from "react";
 import "components/sidebar.css";
-import Popup from "reactjs-popup";
+// import Popup from "reactjs-popup";
 import { useState } from 'react';
-import { IoHome } from "react-icons/io5";
-import { GiStreetLight } from "react-icons/gi";
-import { AiFillSchedule } from "react-icons/ai";
-import { IoSettings } from "react-icons/io5";
-import { FcAbout } from "react-icons/fc";
+import { HomeOutlined, BulbOutlined, SettingOutlined } from '@ant-design/icons';
 
 
- export default function Sidebar() {
-	const [activeItem, setActiveItem] = useState(0);
+type IconType = 'home' | 'bulb' | 'setting';
 
-	const handleItemClick = (i: number) => {
-	  setActiveItem(i);
-	};
+const Sidebar: React.FC = () => {
+  const [activeIcons, setActiveIcons] = useState<{ [key in IconType]: boolean }>({
+    home: false,
+    bulb: false,
+    setting: false,
+  });
+
+  const toggleActive = (icon: IconType) => {
+    setActiveIcons(prevState => ({ ...prevState, [icon]: !prevState[icon] }));
+  };
   
 	return (
 		<>
 		<nav>
 		  <div className="nav__container">
-		  <Popup
+		  {/* <Popup
 		  trigger={<a href="/" className={activeItem === 0 ? 'nav__item active' : 'nav__item'} onClick={() => handleItemClick(0)}>
 			  <div className="nav__item-icon">
 			  <IoHome className="dashicon" />
@@ -32,6 +34,7 @@ import { FcAbout } from "react-icons/fc";
 			>
 			  <div className="popup-icon">Home</div>
 			</Popup>
+			<span title="This is a tooltip"><HomeOutlined /></span>
 			<Popup
 			 trigger={<a href="#" className={activeItem === 1 ? 'nav__item active' : 'nav__item'} onClick={() => handleItemClick(1)}>
 			  <div className="nav__item-icon">
@@ -41,10 +44,10 @@ import { FcAbout } from "react-icons/fc";
 			position="right center"
 			on={['hover', 'focus']}
 			arrow
-			>
+			> */}
 			  <div className="popup-icon">Controler</div>
-			</Popup>
-			<Popup
+			{/* </Popup> */}
+			{/* <Popup
 			trigger ={<a href="#" className={activeItem === 2 ? 'nav__item active' : 'nav__item'} onClick={() => handleItemClick(2)}>
 			  <div className="nav__item-icon">
 			  <AiFillSchedule className="dashicon"/>
@@ -76,10 +79,12 @@ import { FcAbout } from "react-icons/fc";
 			on={['hover','focus']}
 			>
 			  <div className="popup-icon">About</div>
-			</Popup>
+			</Popup> */}
 		  </div>
 		</nav>
 		</>
 	);
 	
 }
+
+export default Sidebar;
