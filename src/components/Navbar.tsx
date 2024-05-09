@@ -5,8 +5,7 @@ import { GiStreetLight } from "react-icons/gi";
 import { IoIosLogOut } from "react-icons/io";
 import { SiGoogleearth } from "react-icons/si";
 import { GrMapLocation } from "react-icons/gr";
-
-
+import Popup from "reactjs-popup";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import {useNavigate} from "react-router-dom";
 
@@ -25,15 +24,15 @@ export default function Navbar() {
     const navigate = useNavigate()
 
     const handlelogout = () => {
-       navigate("../")
+    //    navigate("../")
     }
 
     const handlemap = () => {
-        navigate("/Maps")
+        navigate("/Map")
     }
 
     const handlehome = () => {
-        navigate("/Dashboardhome")
+        navigate("/")
     }
 
 
@@ -42,7 +41,7 @@ export default function Navbar() {
         <section className="top-navbar-section">
         <header className="header">
             <div onClick={handlehome} className="natmlogo">
-            <img className="navtmlogo" src="/home/shrey/Desktop/slapp/public/tinymeshimg.png" alt="logo" />  
+            <img className="navtmlogo" src='./tinymeshimg.png' alt="logo" />  
             </div>
             <div className="top-navbar-middle-heading">
                 <h2 className="nav-head">Street Light Management</h2>
@@ -51,18 +50,9 @@ export default function Navbar() {
             
 
             <div className="top-navbar-right1">
-            <GrMapLocation onClick={handlemap} className="map-icon"/>
-
-            {/* <Popup    
-            trigger={<div className="nav-map-div">
+            <div className="nav-map-div">
            <GrMapLocation onClick={handlemap} className="map-icon"/>
-            </div>}
-            position="bottom"
-            on={['hover','focus']}
-            arrow
-            >
-            <div  className="popup-icon">Map</div> 
-            </Popup> */}
+            </div>
             <button  className="submit-btn" >
              <GiStreetLight className="icon2"/>  Light Control</button>
             <button  className="submit-btn" onClick={handlelogout}>

@@ -1,6 +1,6 @@
 import React from "react";
 import "components/sidebar.css";
-
+import Popup from "reactjs-popup";
 import { useState } from 'react';
 import { IoHome } from "react-icons/io5";
 import { GiStreetLight } from "react-icons/gi";
@@ -17,85 +17,69 @@ import { FcAbout } from "react-icons/fc";
 	};
   
 	return (
-	   <div className="sidebar">
-	  {/* <nav>
-		<div className="nav__container">
-		<IoHome className="dashicon" />
-		<GiStreetLight className="dashicon"/>
-
-
-		<a href="#" className={activeItem === 2 ? 'nav__item active' : 'nav__item'} onClick={() => handleItemClick(2)}>
-			<div className="nav__item-icon">
-			<AiFillSchedule className="dashicon"/>
-			</div>
-		  </a>
-
-		  <a href="#" className={activeItem === 3 ? 'nav__item active' : 'nav__item'} onClick={() => handleItemClick(3)}>
-			<div className="nav__item-icon">
-			<IoSettings className="dashicon"/>  
-			</div>
-		  </a>
-
-		  <a href="#" className={activeItem === 4 ? 'nav__item active' : 'nav__item'} onClick={() => handleItemClick(4)}>
-			<div className="nav__item-icon">
-			<FcAbout className="dashicon"/>  
-			</div>
-		  </a>
-
-
-		</div>
-	  </nav> */}
-	  	<ul>
-			<li className="logo">
-				<a href="#">
-					<div className="icon"></div>
-				</a>
-			</li>
-			<div className="Menulist">
-				<li style={{ background: "yellow" }}>
-	  				<a href="#">
-					  <div className="icon">
-					  	<IoHome className="dashicon" />
-					  </div>
-					</a>
-				</li>
-				<li style={{ background: "red" }}>
-	  				<a href="#">
-					  <div className="icon">
-						<GiStreetLight className="dashicon"/>
-					  </div>
-					</a>
-				</li>
-				<li style={{ background: "cyan" }}>
-	  				<a href="#">
-					  <div className="icon">
-					  	<AiFillSchedule className="dashicon"/>
-					  </div>
-					</a>
-				</li>
-				<li style={{ background: "purple" }}>
-	  				<a href="#">
-					  <div className="icon">
-					  	<IoSettings className="dashicon"/>
-					  </div>
-					</a>
-				</li>
-				<li style={{ background: "black" }}>
-	  				<a href="#">
-					  <div className="icon">
-					  	<FcAbout className="dashicon"/>
-					  </div>
-					</a>
-				</li>
-			</div>
-			<div className="bottom">
-				<li style={{ background: "yellow" }}>
-	  				<a href="#">
-					  <div className="icon"></div>
-					</a>
-				</li>
-			</div>
-		</ul>
-	  </div>
+		<>
+		<nav>
+		  <div className="nav__container">
+		  <Popup
+		  trigger={<a href="/" className={activeItem === 0 ? 'nav__item active' : 'nav__item'} onClick={() => handleItemClick(0)}>
+			  <div className="nav__item-icon">
+			  <IoHome className="dashicon" />
+			  </div>
+			</a>}
+			position="right center"
+			on={['hover', 'focus']}
+			arrow
+			>
+			  <div className="popup-icon">Home</div>
+			</Popup>
+			<Popup
+			 trigger={<a href="#" className={activeItem === 1 ? 'nav__item active' : 'nav__item'} onClick={() => handleItemClick(1)}>
+			  <div className="nav__item-icon">
+			  <GiStreetLight className="dashicon"/>
+			  </div>
+			</a>}
+			position="right center"
+			on={['hover', 'focus']}
+			arrow
+			>
+			  <div className="popup-icon">Controler</div>
+			</Popup>
+			<Popup
+			trigger ={<a href="#" className={activeItem === 2 ? 'nav__item active' : 'nav__item'} onClick={() => handleItemClick(2)}>
+			  <div className="nav__item-icon">
+			  <AiFillSchedule className="dashicon"/>
+			  </div>
+			</a>}
+			position="right center"
+			on={['hover','focus']}
+			>
+			  <div className="popup-icon">Schedule</div>
+			</Popup>
+			<Popup
+			trigger={<a href="#" className={activeItem === 3 ? 'nav__item active' : 'nav__item'} onClick={() => handleItemClick(3)}>
+			  <div className="nav__item-icon">
+			  <IoSettings className="dashicon"/>  
+			  </div>
+			</a>}
+			position="right center"
+			on={['hover', 'focus']}
+			>
+			  <div className="popup-icon">Settings</div>
+			</Popup>
+			<Popup
+			trigger={<a href="#" className={activeItem === 4 ? 'nav__item active' : 'nav__item'} onClick={() => handleItemClick(4)}>
+			  <div className="nav__item-icon">
+			  <FcAbout className="dashicon"/>  
+			  </div>
+			</a>}
+			position="right center"
+			on={['hover','focus']}
+			>
+			  <div className="popup-icon">About</div>
+			</Popup>
+		  </div>
+		</nav>
+		</>
 	);
+	
 }
