@@ -3,11 +3,15 @@ import React, { createContext, useReducer, useContext, Dispatch } from 'react';
 // Define an enum for action names
 export enum ActionTypes {
     SET_MODAL_LIST = 'SET_MODAL_LIST',
+    LIGHT_MODE = 'LIGHT_MODE',
+    SIDEBAR_OPTION = 'SIDEBAR_OPTION',
 }
 
 // Define a type for the payload of each action
 type ActionPayloads = {
     [ActionTypes.SET_MODAL_LIST]: string[];
+    [ActionTypes.LIGHT_MODE]: boolean;
+    [ActionTypes.SIDEBAR_OPTION]: string;
 };
 
 type Action<T extends ActionTypes> = {
@@ -18,11 +22,15 @@ type Action<T extends ActionTypes> = {
 // Define the state type
 type State = {
     ModalList: string[],
+    LightMode: boolean,
+    SidebarOption: string,
 };
 
 // Define the initial state
 const initialState: State = {
     ModalList: [],
+    LightMode: true,
+    SidebarOption: 'dashboard',
 };
 
 // Define the reducer function
@@ -31,7 +39,19 @@ const reducer = (state: State, action: Action<ActionTypes>): State => {
         case ActionTypes.SET_MODAL_LIST:
             return {
             ...state,
-            ModalList: action.payload,
+            ModalList: action.payload as string[],
+            };
+        
+        case ActionTypes.LIGHT_MODE:
+            return {
+            ...state,
+            LightMode: action.payload as boolean,
+            };
+
+        case ActionTypes.SIDEBAR_OPTION:
+            return {
+            ...state,
+            SidebarOption: action.payload as string,
             };
 
         default:

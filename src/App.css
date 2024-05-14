@@ -2,33 +2,29 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-.app {
+/* .app {
   display: grid;
-  grid-template-rows: auto 1fr; /* Top navbar takes auto height, main content takes the rest */
-  height: 100vh; /* Full height of the viewport */
+  grid-template-rows: auto 1fr;
+  height: 100vh;
 }
 
-/* Top Navbar styles */
 .top-navbar {
-  background-color: #333; /* Example background color */
+  background-color: #333;
   color: white;
   padding: 10px;
 }
 
-/* Main Content styles */
 .main-content {
   display: grid;
-  grid-template-columns: 200px 1fr; /* Left navbar takes 200px width, content area takes the rest */
+  grid-template-columns: 200px 1fr;
 }
 
-/* Left Navbar styles */
 .left-navbar {
-  background-color: #f0f0f0; /* Example background color */
+  background-color: #f0f0f0;
   padding: 10px;
 }
 
-/* Right Content Area styles */
 .content-area {
   padding: 10px;
-}
+} */
 

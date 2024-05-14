@@ -1,89 +1,71 @@
 import React from "react";
 import "components/sidebar.css";
-// import Popup from "reactjs-popup";
-import { useState } from 'react';
-import { HomeOutlined, BulbOutlined, SettingOutlined } from '@ant-design/icons';
+import Icon, { HomeOutlined, BulbOutlined, SettingOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import type { GetProps } from 'antd';
+
+type CustomIconComponentProps = GetProps<typeof Icon>;
 
 
-type IconType = 'home' | 'bulb' | 'setting';
+const Sidebar: React.FC<{ option: string, handleOption: (option: string) => void }> = ({ option, handleOption }) => {
 
-const Sidebar: React.FC = () => {
-  const [activeIcons, setActiveIcons] = useState<{ [key in IconType]: boolean }>({
-    home: false,
-    bulb: false,
-    setting: false,
-  });
+	// Svg for map icon
+	const MapSvg = () => (
+		<svg width="32px" height="32px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" stroke={ option === 'map' ? "#000000" : "#DCA54C" } transform="rotate(0)">
+		  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+		  <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+		  <g id="SVGRepo_iconCarrier">
+			<path d="M12 6H12.01M9 20L3 17V4L5 5M9 20L15 17M9 20V14M15 17L21 20V7L19 6M15 17V14M15 6.2C15 7.96731 13.5 9.4 12 11C10.5 9.4 9 7.96731 9 6.2C9 4.43269 10.3431 3 12 3C13.6569 3 15 4.43269 15 6.2Z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path>
+		  </g>
+		</svg>);
+	
+	const MapIcon = (props: Partial<CustomIconComponentProps>) => (
+		<Icon component={MapSvg} {...props} />
+	);
 
-  const toggleActive = (icon: IconType) => {
-    setActiveIcons(prevState => ({ ...prevState, [icon]: !prevState[icon] }));
-  };
-  
 	return (
-		<>
-		<nav>
+	<div style={{ paddingLeft: "75%", paddingTop: "25%" }}>
+		<nav data-theme="luxury">
 		  <div className="nav__container">
-		  {/* <Popup
-		  trigger={<a href="/" className={activeItem === 0 ? 'nav__item active' : 'nav__item'} onClick={() => handleItemClick(0)}>
+
+			<div className={ option === 'dashboard' ? 'nav__item active' : 'nav__item' } onClick={() => handleOption('dashboard') }>
 			  <div className="nav__item-icon">
-			  <IoHome className="dashicon" />
+			  <HomeOutlined />
 			  </div>
-			</a>}
-			position="right center"
-			on={['hover', 'focus']}
-			arrow
-			>
-			  <div className="popup-icon">Home</div>
-			</Popup>
-			<span title="This is a tooltip"><HomeOutlined /></span>
-			<Popup
-			 trigger={<a href="#" className={activeItem === 1 ? 'nav__item active' : 'nav__item'} onClick={() => handleItemClick(1)}>
+			</div>
+
+
+			<div className={ option === 'control' ? 'nav__item active' : 'nav__item' } onClick={() => handleOption('control') }>
 			  <div className="nav__item-icon">
-			  <GiStreetLight className="dashicon"/>
+			  <BulbOutlined />
 			  </div>
-			</a>}
-			position="right center"
-			on={['hover', 'focus']}
-			arrow
-			> */}
-			  <div className="popup-icon">Controler</div>
-			{/* </Popup> */}
-			{/* <Popup
-			trigger ={<a href="#" className={activeItem === 2 ? 'nav__item active' : 'nav__item'} onClick={() => handleItemClick(2)}>
+			</div>
+
+
+			<div className={ option === 'schedule' ? 'nav__item active' : 'nav__item' } onClick={() => handleOption('schedule') }>
 			  <div className="nav__item-icon">
-			  <AiFillSchedule className="dashicon"/>
+			  <ClockCircleOutlined />
 			  </div>
-			</a>}
-			position="right center"
-			on={['hover','focus']}
-			>
-			  <div className="popup-icon">Schedule</div>
-			</Popup>
-			<Popup
-			trigger={<a href="#" className={activeItem === 3 ? 'nav__item active' : 'nav__item'} onClick={() => handleItemClick(3)}>
+			</div>
+
+
+			<div className={ option === 'map' ? 'nav__item active' : 'nav__item' } onClick={() => handleOption('map') }>
 			  <div className="nav__item-icon">
-			  <IoSettings className="dashicon"/>  
+			  <MapIcon style={{ color: 'hotpink' }} />
 			  </div>
-			</a>}
-			position="right center"
-			on={['hover', 'focus']}
-			>
-			  <div className="popup-icon">Settings</div>
-			</Popup>
-			<Popup
-			trigger={<a href="#" className={activeItem === 4 ? 'nav__item active' : 'nav__item'} onClick={() => handleItemClick(4)}>
+			</div>
+
+
+			<div className={ option === 'settings' ? 'nav__item active' : 'nav__item' } onClick={() => handleOption('settings') }>
 			  <div className="nav__item-icon">
-			  <FcAbout className="dashicon"/>  
+			  <SettingOutlined />  
 			  </div>
-			</a>}
-			position="right center"
-			on={['hover','focus']}
-			>
-			  <div className="popup-icon">About</div>
-			</Popup> */}
+			</div>
+
 		  </div>
 		</nav>
-		</>
+	</div>
 	);
+
 	
 }
 

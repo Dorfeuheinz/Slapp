@@ -3,20 +3,8 @@ import Self from "components/LeafletMap";
 import L from "leaflet";
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 
-import { ActionTypes, useGlobalContext } from 'contexts/Global';
 
-
-const Map: React.FC = () => {
-    const { state, dispatch } = useGlobalContext();
-
-    const handleOk = () => {
-        handleCancel();
-    }
-
-    const handleCancel = () => {
-        // dispatch({ type: ActionTypes.SET_MODAL_LIST, payload: [...state.ModalList, 'Map'] });
-        dispatch({ type: ActionTypes.SET_MODAL_LIST, payload: state.ModalList.filter(item => item !== 'Map') });
-    }
+const LeafletMap: React.FC = () => {
 
     useEffect(() => {
         // Initialize the map
@@ -47,8 +35,8 @@ const Map: React.FC = () => {
     }, []);
 
     return(
-        <Self visible={state.ModalList.includes('Map')} Ok={handleOk} Cancel={handleCancel}  />
+        <Self />
     );
 }
 
-export default Map;
+export default LeafletMap;

@@ -1,18 +1,19 @@
-
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans");
 
 nav {
   font-family: "Fira Sans", Helvetica, Arial, sans-serif;
     display: flex;
-    position: relative;
+    /* position: relative; */
     width: 60px;
     height: 600px;
-    background-color: #bac0c3;
+    background-color: black;
     border-radius: 15px;
     overflow-x: hidden;
+    border-width: 2px;
+    border-color: #DCA54C;
     transition: width 300ms ease;
     text-decoration: none;
-    font-size: large;
+    font-size: x-large;
     overflow: hidden;
     /* &:hover {
       width: 15%;
@@ -54,7 +55,7 @@ nav {
       text-decoration: none;
   
       &.active {
-        padding-left: 10px;
+        padding-left: 3px;
         text-decoration: none;
         
   
@@ -66,15 +67,15 @@ nav {
         }
   
         * {
-          color: #009688;
-          font-weight: 900;
+          color: #000000;
+          font-weight: 500;
           overflow: hidden;
         }
   
         .nav__item-icon {
-          background-color: white;
-          border-top-left-radius: 50%;
-          border-bottom-left-radius: 50%;
+          background-color: #DCA54C;
+          border-top-left-radius: 40%;
+          border-bottom-left-radius: 40%;
           /* border-radius: 50%; */
           overflow: hidden;
         }
@@ -86,7 +87,7 @@ nav {
           width: 20px;
           height: 20px;
           border-bottom-right-radius: 20px;
-          box-shadow: 5px 5px 0 5px white;
+          box-shadow: 5px 5px 0 5px #DCA54C;
           background: transparent;
           overflow: hidden;
         }
@@ -99,14 +100,13 @@ nav {
           width: 20px;
           height: 20px;
           border-top-right-radius: 20px;
-          box-shadow: 5px -5px 0 5px white;
+          box-shadow: 5px -5px 0 5px #DCA54C;
           background: transparent;
           overflow: hidden;
         }
 
         .dashicon{
-          font-size: xx-large;
-         
+          font-size: x-large;
         }
   
         .nav__item-name {

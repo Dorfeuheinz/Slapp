@@ -13,7 +13,7 @@ export default function ErrorPage() {
     <div id="error-page">
 
 
-    <a target="_blank" href="https://codepen.io/uiswarup/pen/XWGGyWQ">
+    <a target="_blank" rel="noreferrer" href="https://codepen.io/uiswarup/pen/XWGGyWQ">
     <div className="container">
     <div className="row">
         <div className="col-sm-12 col-md-12 mt-5 mb-5">
