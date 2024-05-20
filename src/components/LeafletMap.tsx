@@ -1,7 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "contexts/Global";
 import "leaflet/dist/leaflet.css"
-import { Modal } from 'antd';
 
 //Modal fnc define type- const LeafletMap: React.FC<{ visible: boolean, Ok: () => void, Cancel: () => void }> = ({ visible, Ok, Cancel }) => {
 

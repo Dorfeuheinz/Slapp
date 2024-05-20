@@ -10,8 +10,8 @@ export default function Navbar() {
       dispatch({ type: ActionTypes.LIGHT_MODE, payload: !state.LightMode });
   }
 
-  const whitelogo = require('../components/tinymeshimg.png');
-  const blacklogo = require('../components/tinymeshimg2.png');
+  const whitelogo = require('assets/tinymeshimg.png');
+  const blacklogo = require('assets/tinymeshimg2.png');
   
 
   const navigate = useNavigate()
@@ -23,8 +23,7 @@ export default function Navbar() {
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
-        {!state.LightMode && <img className="" src={String(whitelogo)} alt="logo"/>}
-        {state.LightMode && <img className="" src={String(blacklogo)} alt="logo"/>}
+        {state.LightMode? <img className="" src={String(blacklogo)} alt="logo"/> : <img className="" src={String(whitelogo)} alt="logo"/>}
         {/* <img src={String(logo)} alt="logo"/> */}
       </div>
       {/* <div className="navbar-center hidden lg:flex">

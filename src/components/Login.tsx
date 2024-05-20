@@ -19,7 +19,7 @@ export default function Login() {
       navigate("/")
     }
 
-    const logo = require('../components/tinymeshimg.png');
+    const logo = require('assets/tinymeshimg.png');
 
     return (
         <>
