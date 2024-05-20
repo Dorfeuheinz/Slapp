@@ -1,7 +1,7 @@
 import { MoonFilled, SunFilled } from "@ant-design/icons";
 import { ActionTypes, useGlobalContext } from "contexts/Global";
 import React from "react";
-
+import {useNavigate} from "react-router-dom"
 
 export default function Navbar() {
   const { state, dispatch } = useGlobalContext();
@@ -9,11 +9,23 @@ export default function Navbar() {
   const handleToggle = () => {
       dispatch({ type: ActionTypes.LIGHT_MODE, payload: !state.LightMode });
   }
+
+  const whitelogo = require('../components/tinymeshimg.png');
+  const blacklogo = require('../components/tinymeshimg2.png');
+  
+
+  const navigate = useNavigate()
+
+  const handlelogout = () =>{
+    navigate('/login')
+  }
   
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
-        <a className="btn btn-ghost text-xl">Tinymesh</a>
+        {!state.LightMode && <img className="" src={String(whitelogo)} alt="logo"/>}
+        {state.LightMode && <img className="" src={String(blacklogo)} alt="logo"/>}
+        {/* <img src={String(logo)} alt="logo"/> */}
       </div>
       {/* <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -40,10 +52,10 @@ export default function Navbar() {
       </div> */}
       <div className="navbar-end">
         <div className="flex-none gap-2">
-          <div className="flex">
-            <button onClick={handleToggle}>
+          <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center" onClick={handleToggle}>
               {state.LightMode? <MoonFilled style={{ fontSize: "30px" }} /> : <SunFilled style={{ fontSize: "30px" }} />}
-            </button>
+            </div>
             &emsp;
             <div className="form-control">
               <input
@@ -79,7 +91,7 @@ export default function Navbar() {
                   <a>Settings</a>
                 </li>
                 <li>
-                  <a>Logout</a>
+                  <a onClick={handlelogout}>Logout</a>
                 </li>
               </ul>
             </div>

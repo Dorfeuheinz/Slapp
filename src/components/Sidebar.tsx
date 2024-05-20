@@ -10,7 +10,7 @@ const Sidebar: React.FC<{ option: string, handleOption: (option: string) => void
 
 	// Svg for map icon
 	const MapSvg = () => (
-		<svg width="32px" height="32px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" stroke={ option === 'map' ? "#000000" : "#DCA54C" } transform="rotate(0)">
+		<svg width="32px" height="33px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" stroke={ option === 'map' ? "#000000" : "#DCA54C" } transform="rotate(0)">
 		  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
 		  <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
 		  <g id="SVGRepo_iconCarrier">
@@ -23,7 +23,7 @@ const Sidebar: React.FC<{ option: string, handleOption: (option: string) => void
 	);
 
 	return (
-	<div style={{ paddingLeft: "75%", paddingTop: "25%" }}>
+	<div className="main-div">
 		<nav data-theme="luxury">
 		  <div className="nav__container">
 

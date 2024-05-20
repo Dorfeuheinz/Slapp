@@ -14,14 +14,14 @@ function App() {
   const { state } = useGlobalContext();
   
   return (
-    <div data-theme={state.LightMode? "nord" : "luxury"}>
+    <div style={{width:'100%', height: '100vh'}} data-theme={state.LightMode? "nord" : "luxury"}>
       <Navbar />
       <br />
-      <div className="flex">
+      <div className="app-div">
         <div style={{ width: '20%' }}>
           <Sidebar />
         </div>
-        <div style={{ width: '70%', borderWidth: "2px", borderColor: state.LightMode? "#000000" : "#DCA54C", padding: 2, borderRadius: "15px", height: "80vh" }}>
+        <div style={{ width: '70%',height: "75%"}}>
           {state.SidebarOption === 'dashboard' && <Dashboard />}
           {state.SidebarOption === 'control' && <LightControl />}
           {state.SidebarOption === 'schedule' && <LightSchedule />}
@@ -29,7 +29,7 @@ function App() {
           {state.SidebarOption === 'settings' && <LightSettings />}
         </div>
       </div>
-      <br />      <br />      <br />      <br />      <br />      <br />      <br />      <br />      <br />
+      
     </div>
   );
 }
