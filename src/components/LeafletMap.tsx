@@ -6,7 +6,7 @@ import "leaflet/dist/leaflet.css"
 
 const LeafletMap: React.FC = () => {
 
-  const { state } = useGlobalContext();
+  const { globalState } = useGlobalContext();
 
   return (
     // <Modal
@@ -18,7 +18,7 @@ const LeafletMap: React.FC = () => {
     //     <div id="map" style={{ height: '100vh', width: '100vw' }}></div>
     //   </div>
     // </Modal>
-      <div id="map" style={{position:'sticky' ,height: '100%', width: '100%', borderRadius: "15px", borderWidth: "3px", borderColor: state.LightMode? "#000000" : "#DCA54C", padding: 2,}}></div>
+      <div id="map" style={{position:'sticky' ,height: '90%', width: '100%', borderRadius: "15px", borderWidth: "3px", borderColor: globalState.LightMode? "#000000" : "#DCA54C", padding: 2,}}></div>
   );
 };
 

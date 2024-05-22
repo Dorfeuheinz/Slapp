@@ -1,9 +1,10 @@
 import { PercentageOutlined } from "@ant-design/icons";
 import { Input, Table, TableColumnsType, DatePicker } from "antd";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import type { GetProps } from 'antd';
-import { Dayjs } from "dayjs";
-import { RangeValueType } from "rc-picker/lib/PickerInput/RangePicker";
+
+import { LightScheduleType } from "containers/LightSchedule";
+import { SLCState } from "contexts/SLC";
 
 type RangePickerProps = GetProps<typeof DatePicker.RangePicker>;
 
@@ -17,56 +18,23 @@ interface DataType {
   brightness: number;
 }
 
-const LightSchedule: React.FC = () => {
-  const [data, setData] = useState<DataType[]>(() => {
-    const initialData: DataType[] = [];
-    for (let i = 0; i < 100; i++) {
-      initialData.push({
-        key: i,
-        name: `S Light ${i}`,
-        timestamp: new Date().toLocaleString(),
-        scheduler: [],
-        brightness: 0,
-      });
-    }
-    return initialData;
-  });
+const LightSchedule: React.FC<LightScheduleType> = ({ slcState, lightMode, handleScheduler, handleScheduleEvent, handleBrightnessChange }) => {
 
-  const handleScheduler = (key: number) => (value: RangeValueType<Dayjs> | null | undefined) => {
-    if(value !== null && value !== undefined && value[0] && value[1]){
-      console.log('onOk: ', value![0]!.format('DD/MM/YYYY HH:MM Z'), value![1]!.format('DD/MM/YYYY HH:MM Z'));
-    }
-    else {
-      alert("Operation not allowed, time range undefined!");
-    }
-  };
 
-  const handleScheduleEvent = () => {
-    console.log('onOk: ');
-  };
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setData((prevData) =>
+  //       prevData.map((item) => ({
+  //         ...item,
+  //         timestamp: new Date().toLocaleString(),
+  //       }))
+  //     );
+  //   }, 1000);
 
-  const handleBrightnessChange = (key: number, value: number) => {
-    setData((prevData) =>
-      prevData.map((item) =>
-        item.key === key ? { ...item, brightness: value } : item
-      )
-    );
-  };
+  //   return () => clearInterval(interval);
+  // }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setData((prevData) =>
-        prevData.map((item) => ({
-          ...item,
-          timestamp: new Date().toLocaleString(),
-        }))
-      );
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const columns: TableColumnsType<DataType> = [
+  const columns: TableColumnsType<SLCState> = [
     {
       title: "Name",
       width: 35,
@@ -84,14 +52,16 @@ const LightSchedule: React.FC = () => {
       dataIndex: "schedule",
       key: "schedule",
       width: 40,
-      render: (_, record: DataType) => (
+      render: (_, record: SLCState) => (
         <RangePicker
+          size="large"
           showTime={{ format: 'HH:mm' }}
           format="DD/MM/YYYY HH:mm"
           onChange={(value, dateString) => {
             console.log('Selected Time: ', value);
             console.log('Formatted Selected Time: ', dateString);
           }}
+          style={{ borderColor: lightMode? "silver" : "gray" }}
           onOk={handleScheduler(record.key)}
         />
       ),
@@ -101,7 +71,7 @@ const LightSchedule: React.FC = () => {
       dataIndex: "brightness",
       key: "brightness",
       width: 20,
-      render: (_, record: DataType) => (
+      render: (_, record: SLCState) => (
         <Input
           size="large"
           type="number"
@@ -109,7 +79,8 @@ const LightSchedule: React.FC = () => {
           min="0"
           max="100"
           value={record.brightness}
-          suffix={<PercentageOutlined />} 
+          suffix={<PercentageOutlined />}
+          style={{ borderColor: lightMode? "silver" : "gray" }}
           onChange={(e) => handleBrightnessChange(record.key, parseInt(e.target.value, 10))} 
         />
       ),
@@ -119,7 +90,8 @@ const LightSchedule: React.FC = () => {
       dataIndex: "scheduler_info",
       key: "scheduler_info",
       width: 30,
-      render: (_, record: DataType) => record !== null && record !== undefined && record.scheduler!.length !== 0 ? <>
+      // && record.scheduler!.length !== 0
+      render: (_, record: SLCState) => record !== null && record !== undefined && record.scheduler ? <>
                 <span style={{ color: 'GrayText' }}>From:</span> ${record.scheduler![0]!.format('DD/MM/YYYY HH:MM Z')}
                 <br/>
                 <span style={{ color: 'GrayText' }}>To:</span> ${record.scheduler![0]!.format('DD/MM/YYYY HH:MM Z')}
@@ -131,23 +103,24 @@ const LightSchedule: React.FC = () => {
     },
   ];
 
+
+
   return (
     <Table
-      data-theme={"light"}
+      data-theme={lightMode? "light": "luxury"}
       columns={columns}
-      dataSource={data}
+      dataSource={slcState}
       summary={() => (
-        <Table.Summary >
+        <Table.Summary>
           <Table.Summary.Row>
             <Table.Summary.Cell index={0} colSpan={2} />
           </Table.Summary.Row>
         </Table.Summary>
       )}
-      // antd site header height
-      sticky={{ offsetHeader: 64 }}
+      sticky={{ offsetHeader: 0 }}
     />
   );
 };
 
   
-  export default LightSchedule;
+export default LightSchedule;

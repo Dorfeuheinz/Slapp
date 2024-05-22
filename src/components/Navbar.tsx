@@ -1,13 +1,13 @@
 import { MoonFilled, SunFilled } from "@ant-design/icons";
-import { ActionTypes, useGlobalContext } from "contexts/Global";
+import { GlobalActionTypes, useGlobalContext } from "contexts/Global";
 import React from "react";
 import {useNavigate} from "react-router-dom"
 
 export default function Navbar() {
-  const { state, dispatch } = useGlobalContext();
+  const { globalState, globalDispatch } = useGlobalContext();
 
   const handleToggle = () => {
-      dispatch({ type: ActionTypes.LIGHT_MODE, payload: !state.LightMode });
+      globalDispatch({ type: GlobalActionTypes.LIGHT_MODE, payload: !globalState.LightMode });
   }
 
   const whitelogo = require('assets/tinymeshimg.png');
@@ -23,7 +23,7 @@ export default function Navbar() {
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
-        {state.LightMode? <img className="" src={String(blacklogo)} alt="logo"/> : <img className="" src={String(whitelogo)} alt="logo"/>}
+        {globalState.LightMode? <img className="" src={String(blacklogo)} alt="logo"/> : <img className="" src={String(whitelogo)} alt="logo"/>}
         {/* <img src={String(logo)} alt="logo"/> */}
       </div>
       {/* <div className="navbar-center hidden lg:flex">
@@ -53,7 +53,7 @@ export default function Navbar() {
         <div className="flex-none gap-2">
           <div className="flex items-center justify-center">
             <div className="flex items-center justify-center" onClick={handleToggle}>
-              {state.LightMode? <MoonFilled style={{ fontSize: "30px" }} /> : <SunFilled style={{ fontSize: "30px" }} />}
+              {globalState.LightMode? <MoonFilled style={{ fontSize: "30px" }} /> : <SunFilled style={{ fontSize: "30px" }} />}
             </div>
             &emsp;
             <div className="form-control">

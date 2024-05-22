@@ -1,7 +1,7 @@
 import React, { createContext, useReducer, useContext, Dispatch } from 'react';
 
 // Define an enum for action names
-export enum ActionTypes {
+export enum GlobalActionTypes {
     SET_MODAL_LIST = 'SET_MODAL_LIST',
     LIGHT_MODE = 'LIGHT_MODE',
     SIDEBAR_OPTION = 'SIDEBAR_OPTION',
@@ -9,18 +9,18 @@ export enum ActionTypes {
 
 // Define a type for the payload of each action
 type ActionPayloads = {
-    [ActionTypes.SET_MODAL_LIST]: string[];
-    [ActionTypes.LIGHT_MODE]: boolean;
-    [ActionTypes.SIDEBAR_OPTION]: string;
+    [GlobalActionTypes.SET_MODAL_LIST]: string[];
+    [GlobalActionTypes.LIGHT_MODE]: boolean;
+    [GlobalActionTypes.SIDEBAR_OPTION]: string;
 };
 
-type Action<T extends ActionTypes> = {
+type Action<T extends GlobalActionTypes> = {
     type: T;
     payload: ActionPayloads[T];
 };
 
 // Define the state type
-type State = {
+export type State = {
     ModalList: string[],
     LightMode: boolean,
     SidebarOption: string,
@@ -34,21 +34,21 @@ const initialState: State = {
 };
 
 // Define the reducer function
-const reducer = (state: State, action: Action<ActionTypes>): State => {
+const reducer = (state: State, action: Action<GlobalActionTypes>): State => {
     switch (action.type) {
-        case ActionTypes.SET_MODAL_LIST:
+        case GlobalActionTypes.SET_MODAL_LIST:
             return {
             ...state,
             ModalList: action.payload as string[],
             };
         
-        case ActionTypes.LIGHT_MODE:
+        case GlobalActionTypes.LIGHT_MODE:
             return {
             ...state,
             LightMode: action.payload as boolean,
             };
 
-        case ActionTypes.SIDEBAR_OPTION:
+        case GlobalActionTypes.SIDEBAR_OPTION:
             return {
             ...state,
             SidebarOption: action.payload as string,
@@ -60,20 +60,20 @@ const reducer = (state: State, action: Action<ActionTypes>): State => {
 };
 
 // Create the context
-const Context = createContext<{state: State; dispatch: Dispatch<Action<ActionTypes>>;}>({
-    state: initialState,
-    dispatch: () => null,
+const Context = createContext<{ globalState: State; globalDispatch: Dispatch<Action<GlobalActionTypes>> }>({
+    globalState: initialState,
+    globalDispatch: () => null,
 });
 
 // Define a hook to use the context
-export const useGlobalContext = (): { state: State; dispatch: Dispatch<Action<ActionTypes>> } => useContext(Context);
+export const useGlobalContext = (): { globalState: State; globalDispatch: Dispatch<Action<GlobalActionTypes>> } => useContext(Context);
 
 // Define the provider component
 export const GlobalContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     return (
-        <Context.Provider value={{ state, dispatch }}>
+        <Context.Provider value={{ globalState: state, globalDispatch: dispatch }}>
             {children}
         </Context.Provider>
     );

@@ -1,63 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { Switch, Table } from "antd";
+import React from "react";
+import { Table } from "antd";
 import type { TableColumnsType } from "antd";
 import { PercentageOutlined, SettingFilled } from "@ant-design/icons";
 import { Input } from 'antd';
-
-interface DataType {
-  key: number;
-  name: string;
-  timestamp: string;
-  switch: boolean;
-  brightness: number;
-}
+import { LightControlType } from "containers/LightControl";
+import { SLCState } from "contexts/SLC";
 
 
-const LightControl: React.FC = () => {
-  const [data, setData] = useState<DataType[]>(() => {
-    const initialData: DataType[] = [];
-    for (let i = 0; i < 100; i++) {
-      initialData.push({
-        key: i,
-        name: `S Light ${i}`,
-        timestamp: new Date().toLocaleString(),
-        switch: true,
-        brightness: 0,
-      });
-    }
-    return initialData;
-  });
-  
-  const handleSwitch = (key: number) => {
-    setData((prevData) =>
-      prevData.map((item) =>
-        item.key === key ? { ...item, switch: !item.switch } : item
-      )
-    );
-  };
+const LightControl: React.FC<LightControlType> = ({ slcState, lightMode, handleSwitch, handleBrightnessChange }) => {
 
-  const handleBrightnessChange = (key: number, value: number) => {
-    setData((prevData) =>
-      prevData.map((item) =>
-        item.key === key ? { ...item, brightness: value } : item
-      )
-    );
-  };
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setData((prevData) =>
+  //       prevData.map((item) => ({
+  //         ...item,
+  //         timestamp: new Date().toLocaleString(),
+  //       }))
+  //     );
+  //   }, 1000);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setData((prevData) =>
-        prevData.map((item) => ({
-          ...item,
-          timestamp: new Date().toLocaleString(),
-        }))
-      );
-    }, 1000);
+  //   return () => clearInterval(interval);
+  // }, []);
 
-    return () => clearInterval(interval);
-  }, []);
-
-  const columns: TableColumnsType<DataType> = [
+  const columns: TableColumnsType<SLCState> = [
     {
       title: "Name",
       width: 35,
@@ -75,7 +40,7 @@ const LightControl: React.FC = () => {
       dataIndex: "switch",
       key: "switch",
       width: 20,
-      render: (_, record: DataType) => (
+      render: (_, record: SLCState) => (
         <input
           type="checkbox"
           className="toggle toggle-success toggle-lg"
@@ -89,7 +54,7 @@ const LightControl: React.FC = () => {
       dataIndex: "brightness",
       key: "brightness",
       width: 20,
-      render: (_, record: DataType) => (
+      render: (_, record: SLCState) => (
         <Input
           size="large"
           type="number"
@@ -98,6 +63,7 @@ const LightControl: React.FC = () => {
           max="100"
           value={record.brightness}
           suffix={<PercentageOutlined />} 
+          style={{ borderColor: lightMode? "silver" : "gray" }}
           onChange={(e) => handleBrightnessChange(record.key, parseInt(e.target.value, 10))} 
         />
       ),
@@ -113,9 +79,9 @@ const LightControl: React.FC = () => {
 
   return (
     <Table
-      data-theme={"light"}
+      data-theme={lightMode? "light": "luxury"}
       columns={columns}
-      dataSource={data}
+      dataSource={slcState}
       summary={() => (
         <Table.Summary >
           <Table.Summary.Row>
@@ -123,8 +89,7 @@ const LightControl: React.FC = () => {
           </Table.Summary.Row>
         </Table.Summary>
       )}
-      // antd site header height
-      sticky={{ offsetHeader: 64 }}
+      sticky={{ offsetHeader: 0 }}
     />
   );
 };
