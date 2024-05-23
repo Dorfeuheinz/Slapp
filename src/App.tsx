@@ -9,6 +9,7 @@ import LightControl from "containers/LightControl";
 import LightSettings from "containers/LightSettings";
 import LightSchedule from "containers/LightSchedule";
 import { ConfigProvider } from "antd";
+import Analytics from "containers/Analytics";
 
 
 function App() {
@@ -42,13 +43,15 @@ function App() {
             {globalState.SidebarOption === 'control' && <LightControl />}
             {globalState.SidebarOption === 'schedule' && <LightSchedule />}
             {globalState.SidebarOption === 'map' && <LeafletMap />}
+            {globalState.SidebarOption === 'analytics' && <Analytics />}
+
             {globalState.SidebarOption === 'settings' && <LightSettings />}
           </ConfigProvider>
         </div>
       </div>
       
     </div>
-  );
+ );
 }
 
 export default App;

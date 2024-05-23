@@ -85,6 +85,7 @@ const LightControl: React.FC<LightControlType> = ({ slcState, lightMode, handleS
   ];
 
   return (
+    <div  style={{overflowY: "scroll" }}>
     <Table
       data-theme={lightMode? "light": "luxury"}
       columns={columns}
@@ -98,6 +99,7 @@ const LightControl: React.FC<LightControlType> = ({ slcState, lightMode, handleS
       )}
       sticky={{ offsetHeader: 0 }}
     />
+    </div>
   );
 };
 

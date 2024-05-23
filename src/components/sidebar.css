@@ -5,7 +5,7 @@ nav {
     display: flex;
     /* position: relative; */
     width: 60px;
-    height: 600px;
+    height: 650px;
     background-color: black;
     border-radius: 15px;
     overflow-x: hidden;
@@ -37,7 +37,7 @@ nav {
       justify-content: center;
       flex-direction: column;
       text-decoration: none;
-      gap: 8%;
+      gap: 5%;
       overflow: hidden;
     }
 
@@ -193,5 +193,5 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 10%;
+    padding-top: 4%;
   }
