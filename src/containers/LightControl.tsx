@@ -15,6 +15,7 @@ export default function LightControl() {
     const { slcState, slcDispatch } = useSLContext();
 
     const handleSwitch = (key: number) => {
+      console.log("hehehehe", key)
       slcDispatch({
           type: SLCActionTypes.SET_SWITCH,
           payload: { key, value: false }

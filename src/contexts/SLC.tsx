@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useContext, Dispatch } from 'react';
 import { DatePicker } from "antd";
 import type { GetProps } from 'antd';
+import dayjs from "dayjs";
 
 export type RangePickerProps = GetProps<typeof DatePicker.RangePicker>;
 
@@ -31,7 +32,7 @@ type Action<T extends SLCActionTypes> = {
 export type SLCState = {
     key: number;
     name: string;
-    timestamp: string;
+    timestamp: dayjs.Dayjs | null;
     switch: boolean;
     scheduler: RangePickerProps['value'];
     brightness: number;
@@ -42,7 +43,7 @@ for (let i=0;i<100;i++) {
     data.push({
         key: i,
         name: `SLC ${i}`,
-        timestamp: new Date().toLocaleString(),
+        timestamp: dayjs('2024-05-23T12:10:00Z'),
         switch: true,
         scheduler: null,
         brightness: 0,
@@ -63,7 +64,7 @@ const reducer = (state: SLCState[], action: Action<SLCActionTypes>): SLCState[] 
 
         case SLCActionTypes.SET_TIME:
             return state.map((dataset) =>
-                dataset.key === action.payload.key ? { ...dataset, timestamp: action.payload.value as string } : dataset
+                dataset.key === action.payload.key ? { ...dataset, timestamp: action.payload.value as dayjs.Dayjs | null } : dataset
             );
       
         case SLCActionTypes.SET_SWITCH:

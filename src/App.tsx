@@ -33,6 +33,7 @@ function App() {
                 Table: {
                   borderColor: "transparent",
                   headerSplitColor: "transparent",
+                  rowHoverBg: globalState.LightMode? "#f8f8f8" : "#0a0a0a",
                 },
               },
             }}
