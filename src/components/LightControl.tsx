@@ -5,9 +5,13 @@ import { PercentageOutlined, SettingFilled } from "@ant-design/icons";
 import { Input } from 'antd';
 import { LightControlType } from "containers/LightControl";
 import { SLCState } from "contexts/SLC";
+import dayjs from "dayjs";
+import relativeTime from 'dayjs/plugin/relativeTime';
 
+dayjs.extend(relativeTime);
 
 const LightControl: React.FC<LightControlType> = ({ slcState, lightMode, handleSwitch, handleBrightnessChange }) => {
+  const [currentTime, setCurrentTime] = useState(dayjs());
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,6 +36,11 @@ const LightControl: React.FC<LightControlType> = ({ slcState, lightMode, handleS
       width: 30,
       dataIndex: "timestamp",
       key: "timestamp",
+      render: (_, record: SLCState) => (
+        record.timestamp !==null ?
+        <p><b style={{ color: "green" }}>Active</b> <br /> {dayjs().format('DD/MM/YYYY HH:mm:ss')}</p>:
+        <><b>Last active</b><br />{dayjs().subtract((record.timestamp!.unix() - dayjs().unix()), 'seconds').from(dayjs())}</>
+      ),
     },
     {
       title: "Switch",
