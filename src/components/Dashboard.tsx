@@ -184,13 +184,9 @@ const BrightnessSvg: React.FC<DashboardSvgProps> = ({option}) => (
   </svg>
 );
 
-const Dashboard: React.FC = () => {
+const Dashboard: React.FC<{ lightMode: string }> = ({ lightMode }) => {
   const { globalState } = useGlobalContext();
-  const [lightMode, setLightMode] = useState(globalState.LightMode ? "black" : "#DCA54C");
 
-  useEffect(() => {
-    setLightMode(globalState.LightMode ? "black" : "#DCA54C");
-  }, [globalState.LightMode]);
 
   const BrightnessIcon = (props: Partial<CustomIconComponentProps>) => (
       <Icon component={() => <BrightnessSvg option={lightMode} />} {...props} />

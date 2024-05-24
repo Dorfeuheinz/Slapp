@@ -2,6 +2,9 @@ import React from "react";
 import Self from "components/Sidebar";
 import { GlobalActionTypes, useGlobalContext } from "contexts/Global";
 
+export interface SidebarSvgProps {
+    option: string;
+}
 
 export default function Sidebar() {
 	const { globalState, globalDispatch } = useGlobalContext();

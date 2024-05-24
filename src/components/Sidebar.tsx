@@ -2,11 +2,8 @@ import React from "react";
 import "components/sidebar.css";
 import Icon, { HomeOutlined, BulbOutlined, SettingOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import { CustomIconComponentProps } from "@ant-design/icons/lib/components/Icon";
-// import { Svg } from "utilities/Svg";
+import { SidebarSvgProps } from "containers/Sidebar";
 
-interface SidebarSvgProps {
-    option: string;
-}
 
 const MapSvg: React.FC<SidebarSvgProps> = ({option}) => (
     <svg width="32px" height="33px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" stroke={option} transform="rotate(0)">
@@ -33,7 +30,6 @@ const AnalyticsSvg: React.FC<SidebarSvgProps> = ({option}) => (
 
 
 const Sidebar: React.FC<{ option: string, handleOption: (option: string) => void }> = ({ option, handleOption }) => {
-
 	const MapIcon = (props: Partial<CustomIconComponentProps>) => (
 		<Icon component={() => <MapSvg option={option === 'map' ? "#000000" : "#DCA54C"} />} {...props} />
 	);
