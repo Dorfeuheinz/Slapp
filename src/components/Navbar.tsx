@@ -3,7 +3,7 @@ import { GlobalActionTypes, useGlobalContext } from "contexts/Global";
 import React from "react";
 import {useNavigate} from "react-router-dom"
 
-export default function Navbar() {
+const Navbar: React.FC = () =>  {
   const { globalState, globalDispatch } = useGlobalContext();
 
   const handleToggle = () => {
@@ -81,16 +81,16 @@ export default function Navbar() {
                 className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a className="justify-between">
+                  <a href="#" className="justify-between">
                     Profile
                     <span className="badge">New</span>
                   </a>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <a href="#">Settings</a>
                 </li>
                 <li>
-                  <a onClick={handlelogout}>Logout</a>
+                  <a href="#" onClick={handlelogout}>Logout</a>
                 </li>
               </ul>
             </div>
@@ -100,3 +100,5 @@ export default function Navbar() {
     </div>
   );
 }
+
+export default Navbar;
