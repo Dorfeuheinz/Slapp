@@ -10,6 +10,7 @@ import Icon, {
 } from "@ant-design/icons";
 import { CustomIconComponentProps } from "@ant-design/icons/lib/components/Icon";
 import { useGlobalContext } from "contexts/Global";
+import {Button,Flex} from 'antd';
 
 interface DashboardSvgProps {
   option: string;
@@ -29,7 +30,7 @@ const LightoffSvg: React.FC<DashboardSvgProps> = ({option}) => (
           strokeLinecap="round"
           strokeLinejoin="round"
       />
-      <g id="SVGRepo_iconCarrier">
+     <g id="SVGRepo_iconCarrier">
           <path
               d="M9 18H15"
               stroke={option}
@@ -210,41 +211,20 @@ const Dashboard: React.FC<{ lightMode: string }> = ({ lightMode }) => {
 
   return (
     <>
-      <div style={{ display: "flex", gap: "2%", paddingTop: "6%" }}>
-        <Space direction="vertical" size={16}>
-          <Card
-            title="Total Assets"
-            extra={<a href="#">More</a>}
-            style={{ width: 300 }}
-          >
-            <div style={{ display: "flex", gap: "31%" }}>
-              <HomeOutlined style={{ fontSize: "2.5rem" }} />
-              <p style={{ fontSize: "1.3rem" }}>Card content</p>
-            </div>
-          </Card>
-          <Card
-            title="Total Gateways"
-            extra={<a href="#">More</a>}
-            style={{ width: 300 }}
-          >
-            <div style={{ display: "flex", gap: "31%" }}>
-              <TotalgatewayIcon style={{ fontSize: "2.5rem" }} />
-              <p style={{ fontSize: "1.3rem" }}>Card content</p>
-            </div>
-          </Card>
-          <Card
-            title="Total Lights"
-            extra={<a href="#">More</a>}
-            style={{ width: 300 }}
-          >
-            <div style={{ display: "flex", gap: "31%" }}>
-              <TotallightsIcon style={{ fontSize: "2.5rem" }} />
-              <p style={{ fontSize: "1.3rem" }}>Card content</p>
-            </div>
-          </Card>
-        </Space>
-        <Space direction="vertical" size={16}>
-          <Card
+      <div style={{width:'100%',height:'100%', paddingTop: "6%" }}>
+       <Flex wrap gap="large">
+    
+       <Card hoverable
+       title="Total Assets"
+       extra={<a href="#">More</a>}
+       style={{ width: 300 }}
+     >
+       <div style={{ display: "flex", gap: "31%" }}>
+         <HomeOutlined style={{ fontSize: "2.5rem" }} />
+         <p style={{ fontSize: "1.3rem" }}>Card content</p>
+       </div>
+     </Card>
+     <Card hoverable
             title="Max Load (W)"
             extra={<a href="#">More</a>}
             style={{ width: 300 }}
@@ -253,30 +233,8 @@ const Dashboard: React.FC<{ lightMode: string }> = ({ lightMode }) => {
               <MaxloadIcon style={{ fontSize: "2.4rem" }} />
               <p style={{ fontSize: "1.3rem" }}>Card content</p>
             </div>
-          </Card>
-          <Card
-            title="Gateways ON"
-            extra={<a href="#">More</a>}
-            style={{ width: 300 }}
-          >
-            <div style={{ display: "flex", gap: "31%" }}>
-              <ToTopOutlined style={{ fontSize: "2.5rem" }} />
-              <p style={{ fontSize: "1.3rem" }}>Card content</p>
-            </div>
-          </Card>
-          <Card
-            title="Lights ON"
-            extra={<a href="#">More</a>}
-            style={{ width: 300 }}
-          >
-            <div style={{ display: "flex", gap: "31%" }}>
-              <BulbOutlined style={{ fontSize: "3rem" }} />
-              <p style={{ fontSize: "1.3rem" }}>Card content</p>
-            </div>
-          </Card>
-        </Space>
-        <Space direction="vertical" size={16}>
-          <Card
+          </Card>  
+          <Card hoverable
             title="Active Load (W)"
             extra={<a href="#">More</a>}
             style={{ width: 300 }}
@@ -286,7 +244,37 @@ const Dashboard: React.FC<{ lightMode: string }> = ({ lightMode }) => {
               <p style={{ fontSize: "1.3rem" }}>Card content</p>
             </div>
           </Card>
-          <Card
+          <Card hoverable
+            title="Total faulty assets"
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%" }}>
+              <ExclamationCircleOutlined style={{ fontSize: "2.5rem" }} />
+              <p style={{ fontSize: "1.3rem" }}>Card content</p>
+            </div>
+          </Card> 
+          <Card hoverable
+            title="Total Gateways"
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%" }}>
+              <TotalgatewayIcon style={{ fontSize: "2.5rem" }} />
+              <p style={{ fontSize: "1.3rem" }}>Card content</p>
+            </div>
+          </Card>
+          <Card hoverable
+            title="Gateways ON"
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%" }}>
+              <ToTopOutlined style={{ fontSize: "2.5rem" }} />
+              <p style={{ fontSize: "1.3rem" }}>Card content</p>
+            </div>
+          </Card>
+          <Card hoverable
             title="Gateways OFF"
             extra={<a href="#">More</a>}
             style={{ width: 300 }}
@@ -296,29 +284,7 @@ const Dashboard: React.FC<{ lightMode: string }> = ({ lightMode }) => {
               <p style={{ fontSize: "1.3rem" }}>Card content</p>
             </div>
           </Card>
-          <Card
-            title="Lights OFF"
-            extra={<a href="#">More</a>}
-            style={{ width: 300 }}
-          >
-            <div style={{ display: "flex", gap: "31%" }}>
-              <LightoffIcon style={{ fontSize: "4rem" }} />
-              <p style={{ fontSize: "1.3rem" }}>Card content</p>
-            </div>
-          </Card>
-        </Space>
-        <Space direction="vertical" size={16}>
-          <Card
-            title="Total faulty assets"
-            extra={<a href="#">More</a>}
-            style={{ width: 300 }}
-          >
-            <div style={{ display: "flex", gap: "31%" }}>
-              <ExclamationCircleOutlined style={{ fontSize: "2.5rem" }} />
-              <p style={{ fontSize: "1.3rem" }}>Card content</p>
-            </div>
-          </Card>
-          <Card
+          <Card hoverable
             title="Faulty Gateways"
             extra={<a href="#">More</a>}
             style={{ width: 300 }}
@@ -328,7 +294,37 @@ const Dashboard: React.FC<{ lightMode: string }> = ({ lightMode }) => {
               <p style={{ fontSize: "1.3rem" }}>Card content</p>
             </div>
           </Card>
-          <Card
+          <Card hoverable
+            title="Total Lights"
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%" }}>
+              <TotallightsIcon style={{ fontSize: "2.5rem" }} />
+              <p style={{ fontSize: "1.3rem" }}>Card content</p>
+            </div>
+          </Card>
+          <Card hoverable
+            title="Lights ON"
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%" }}>
+              <BulbOutlined style={{ fontSize: "3rem" }} />
+              <p style={{ fontSize: "1.3rem" }}>Card content</p>
+            </div>
+          </Card>
+          <Card hoverable
+            title="Lights OFF"
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%" }}>
+              <LightoffIcon style={{ fontSize: "4rem" }} />
+              <p style={{ fontSize: "1.3rem" }}>Card content</p>
+            </div>
+          </Card>
+          <Card hoverable
             title="Brightness Percentage"
             extra={<a href="#">More</a>}
             style={{ width: 300 }}
@@ -338,8 +334,8 @@ const Dashboard: React.FC<{ lightMode: string }> = ({ lightMode }) => {
               <p style={{ fontSize: "1.3rem" }}>Card content</p>
             </div>
           </Card>
-        </Space>
-      </div>
+  </Flex>
+  </div>
     </>
   );
 };

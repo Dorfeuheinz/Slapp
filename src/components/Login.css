@@ -129,3 +129,44 @@ button:hover{
     overflow-y: scroll;
     overflow-x: hidden;
 }
+
+.leaflet-touch .leaflet-geosearch-bar form{
+	display: flex;
+	width: 100%;
+	background: transparent;
+	color: white;
+}
+
+.leaflet-touch .leaflet-geosearch-bar form input {
+    height: 30px;
+	color: black;
+}
+
+.reset{
+ color: red;
+ font-size: 1.3rem;
+}
+
+.leaflet-geosearch-bar {
+    position: relative;
+    display: flex;
+	height: auto;
+    width: 400px;
+    max-width: calc(100% - 120px);
+    margin: 10px auto 0;
+    cursor: auto;
+    z-index: 1000;
+	color: black;
+	border-color: transparent;
+}
+
+
+.leaflet-control-geosearch .results.active {
+    padding: 8px 0;
+    border-top: 1px solid #c6c6c6;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+	color: #000;
+	background-color: #F9F6EE;
+}
