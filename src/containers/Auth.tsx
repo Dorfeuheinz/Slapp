@@ -2,6 +2,7 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import Self from "components/Auth";
 import axios from 'axios';
 import { useAuth } from "contexts/Auth";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export type AuthType = {
     username: string;
@@ -21,6 +22,11 @@ export default function Auth() {
     const [email, setEmail] = useState('');
 
     const auth = useAuth();
+    const navigate = useNavigate();
+
+    if (auth.access_token) {
+        return <Navigate to="/" replace={true} />;
+    }
 
     const handleSignup = async () => {
         try {
@@ -43,6 +49,7 @@ export default function Auth() {
             });
             auth.login(response.data.token);
             alert('Logged in successfully!');
+            navigate("localhost:3000");
         } catch (error) {
             console.error('Login error:', error);
         }

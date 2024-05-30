@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "App.css";
 import Navbar from "containers/Navbar";
 import Sidebar from "containers/Sidebar";
@@ -18,9 +18,13 @@ function App() {
   const { globalState } = useGlobalContext();
   const auth = useAuth();
 
-  if (!auth.token) {
+  if (!auth.access_token) {
     return <Navigate to="/auth" replace={true} />;
   }
+
+  // useEffect(() => {
+
+  // }, []);
   
   return (
     <div style={{width:'100%', height: '100vh'}} data-theme={globalState.LightMode? "nord" : "luxury"}>

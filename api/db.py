@@ -13,5 +13,3 @@ except Exception as e:
 
 db = client.get_database("tinymesh")
 users_collection = db.get_collection("users")
-
-print(users_collection)

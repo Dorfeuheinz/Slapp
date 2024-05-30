@@ -19,7 +19,6 @@ class User(BaseModel):
     email: str
     password: str
     id: int = None
-    token: str = None
 
 
 def get_user(username: str):
@@ -54,12 +53,3 @@ async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)]):
     if user is None:
         raise credentials_exception
     return user
-
-
-# @router.get("/user")
-# def get_user(credentials: HTTPAuthorizationCredentials = Depends(security)):
-#     token = credentials.credentials
-#     user_data = users_collection.find_one({"token": token})
-#     if user_data["username"] and user_data["email"]:
-#         return user_data
-#     raise HTTPException(status_code=401, detail="Invalid token")
