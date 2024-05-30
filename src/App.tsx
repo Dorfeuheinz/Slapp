@@ -10,10 +10,17 @@ import LightSettings from "containers/LightSettings";
 import LightSchedule from "containers/LightSchedule";
 import { ConfigProvider } from "antd";
 import Analytics from "containers/Analytics";
+import { useAuth } from "contexts/Auth";
+import { Navigate } from "react-router-dom";
 
 
 function App() {
   const { globalState } = useGlobalContext();
+  const auth = useAuth();
+
+  if (!auth.token) {
+    return <Navigate to="/auth" replace={true} />;
+  }
   
   return (
     <div style={{width:'100%', height: '100vh'}} data-theme={globalState.LightMode? "nord" : "luxury"}>

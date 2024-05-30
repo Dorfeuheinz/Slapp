@@ -3,7 +3,7 @@ import { GlobalActionTypes, useGlobalContext } from "contexts/Global";
 import React from "react";
 import {useNavigate} from "react-router-dom"
 
-const Navbar: React.FC = () =>  {
+const Navbar: React.FC<{logout: () => void}> = ({logout}) =>  {
   const { globalState, globalDispatch } = useGlobalContext();
 
   const handleToggle = () => {
@@ -14,11 +14,11 @@ const Navbar: React.FC = () =>  {
   const blacklogo = require('assets/tinymeshimg2.png');
   
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
-  const handlelogout = () =>{
-    navigate('/login')
-  }
+  // const handlelogout = () =>{
+  //   navigate('/login')
+  // }
   
   return (
     <div className="navbar bg-base-100">
@@ -90,7 +90,7 @@ const Navbar: React.FC = () =>  {
                   <a href="#">Settings</a>
                 </li>
                 <li>
-                  <a href="#" onClick={handlelogout}>Logout</a>
+                  <a href="#" onClick={logout}>Logout</a>
                 </li>
               </ul>
             </div>
