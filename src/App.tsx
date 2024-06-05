@@ -16,7 +16,7 @@ import { Navigate } from "react-router-dom";
 
 
 function App() {
-  const { globalState, globalDispatch } = useGlobalContext();
+  const { globalState } = useGlobalContext();
   const auth = useAuth();
 
   if (!auth.access_token) {
@@ -27,7 +27,9 @@ function App() {
   return (
     <div style={{width:'100%', height: '100vh'}} data-theme={globalState.LightMode? "nord" : "luxury"}>
       <Navbar />
-      <br />
+    
+      <div style={{position:"relative",width: "100%",height: "100%"}}>
+      {/* <video style={{width:'100%', height: '100vh', objectFit:"cover"}} src={videohome} muted autoPlay loop ></video>    */}
       <div className="app-div">
         
         <div style={{width:"90%", height:"100%",display:"flex",flexDirection:"column",alignItems:"normal",justifyContent:"flex-start"}}>
@@ -62,7 +64,7 @@ function App() {
         </div>
         
       </div>
-      
+      </div>
     </div>
  );
 }
