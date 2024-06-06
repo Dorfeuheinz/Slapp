@@ -30,11 +30,13 @@ export default function Auth() {
 
     const handleSignup = async () => {
         try {
-            await axios.post('http://127.0.0.1:8000/register/', { 
+            const response = await axios.post('http://127.0.0.1:8000/register/', { 
                 username: username,
                 email: email,
                 password: password 
             });
+            auth.login(response.data.access_token);
+            navigate("/");
             alert('User registered successfully!');
         } catch (error) {
             console.error('Signup error:', error);
@@ -47,9 +49,9 @@ export default function Auth() {
                 email: email,
                 password: password 
             });
-            auth.login(response.data.token);
+            auth.login(response.data.access_token);
             alert('Logged in successfully!');
-            navigate("localhost:3000");
+            navigate("/");
         } catch (error) {
             console.error('Login error:', error);
         }
