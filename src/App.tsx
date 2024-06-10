@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
 import "App.css";
 import Navbar from "containers/Navbar";
-import Sidebar from "containers/Sidebar";
+// import Sidebar from "containers/Sidebar";
+import Navigationbar from "containers/Navigationbar";
 import LeafletMap from "containers/LeafletMap";
-import { useGlobalContext } from "contexts/Global";
+import { useGlobalContext,GlobalActionTypes } from "contexts/Global";
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 import Dashboard from "containers/Dashboard";
 import LightControl from "containers/LightControl";
 import LightSettings from "containers/LightSettings";
@@ -15,7 +18,7 @@ import { Navigate } from "react-router-dom";
 
 
 function App() {
-  const { globalState } = useGlobalContext();
+  const { globalState, globalDispatch } = useGlobalContext();
   const auth = useAuth();
 
   if (!auth.access_token) {
@@ -26,15 +29,20 @@ function App() {
 
   // }, []);
   
+  const handleToggle = () => {
+    globalDispatch({ type: GlobalActionTypes.LIGHT_MODE, payload: !globalState.LightMode });
+}
   return (
     <div style={{width:'100%', height: '100vh'}} data-theme={globalState.LightMode? "nord" : "luxury"}>
       <Navbar />
       <br />
       <div className="app-div">
         <div style={{ width: '20%' }}>
-          <Sidebar />
+          {/* <Sidebar /> */}
+         
         </div>
-        <div style={{ width: '70%', height: "85%",position: 'relative'}}>
+        <div style={{width:"100%", height:"100%"}}>
+        <div style={{ width: '100%', height: "75%", overflowY: "scroll" }}>
           <ConfigProvider
             theme={{
               token: {
@@ -58,7 +66,14 @@ function App() {
 
             {globalState.SidebarOption === 'settings' && <LightSettings />}
           </ConfigProvider>
+          
         </div>
+        <br />
+        <Navigationbar />
+        </div>
+        <div  onClick={handleToggle} style={{width:"10%",display: "flex", justifyContent: "center", alignItems: "center", paddingTop: "25%"}}>
+              {globalState.LightMode? <DarkModeIcon style={{ fontSize: "30px" }} /> : <LightModeIcon style={{ fontSize: "30px" }} />}
+            </div>
       </div>
       
     </div>
