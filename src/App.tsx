@@ -23,13 +23,7 @@ function App() {
     return <Navigate to="/auth" replace={true} />;
   }
 
-  // useEffect(() => {
-
-  // }, []);
   
-  const handleToggle = () => {
-    globalDispatch({ type: GlobalActionTypes.LIGHT_MODE, payload: !globalState.LightMode });
-}
   return (
     <div style={{width:'100%', height: '100vh'}} data-theme={globalState.LightMode? "nord" : "luxury"}>
       <Navbar />
