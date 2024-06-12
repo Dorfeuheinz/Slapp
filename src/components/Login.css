@@ -128,3 +128,42 @@ button:hover{
 	box-shadow: 0px 92px 269px #FFCF81;
     border-radius: 13px;
 }
+
+.leaflet-touch .leaflet-geosearch-bar form input {
+    height: 30px;
+	color: black;
+	background-color: #FAF9F6;
+}
+
+.reset{
+ color: red;
+ font-size: 1.5rem;
+}
+
+.reset:hover{
+	color: black;
+	font-size: 1.7rem;
+	background-color: transparent;
+   }
+
+
+
+.leaflet-control-geosearch .results.active {
+    padding: 8px 0;
+    border-top: 1px solid #c6c6c6;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+	color: #000;
+	background-color: #F9F6EE;
+}
+
+ 
+.logosizing{
+	width: 20%;
+}
+
+.MuiBox-root {
+	box-shadow: 0px 92px 269px #FFCF81;
+    border-radius: 12px;
+}
