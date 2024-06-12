@@ -5,8 +5,6 @@ import Navbar from "containers/Navbar";
 import Navigationbar from "containers/Navigationbar";
 import LeafletMap from "containers/LeafletMap";
 import { useGlobalContext,GlobalActionTypes } from "contexts/Global";
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import LightModeIcon from '@mui/icons-material/LightMode';
 import Dashboard from "containers/Dashboard";
 import LightControl from "containers/LightControl";
 import LightSettings from "containers/LightSettings";
@@ -37,11 +35,8 @@ function App() {
       <Navbar />
       <br />
       <div className="app-div">
-        <div style={{ width: '20%' }}>
-          {/* <Sidebar /> */}
-         
-        </div>
-        <div style={{width:"100%", height:"100%"}}>
+        
+        <div style={{width:"90%", height:"100%",display:"flex",flexDirection:"column",alignItems:"normal",justifyContent:"flex-start"}}>
         <div style={{ width: '100%', height: "75%", overflowY: "scroll" }}>
           <ConfigProvider
             theme={{
@@ -71,9 +66,7 @@ function App() {
         <br />
         <Navigationbar />
         </div>
-        <div  onClick={handleToggle} style={{width:"10%",display: "flex", justifyContent: "center", alignItems: "center", paddingTop: "25%"}}>
-              {globalState.LightMode? <DarkModeIcon style={{ fontSize: "30px" }} /> : <LightModeIcon style={{ fontSize: "30px" }} />}
-            </div>
+        
       </div>
       
     </div>
