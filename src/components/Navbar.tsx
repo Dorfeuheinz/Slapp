@@ -224,7 +224,6 @@ const Navbar: React.FC<{logout: () => void}> = ({logout}) =>  {
     </Menu>
   );
   
-  const { globalState,globalDispatch } = useGlobalContext();
   
   const handleToggle = () => {
     globalDispatch({ type: GlobalActionTypes.LIGHT_MODE, payload: !globalState.LightMode });
