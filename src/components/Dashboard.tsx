@@ -211,20 +211,41 @@ const Dashboard: React.FC<{ lightMode: string }> = ({ lightMode }) => {
 
   return (
     <>
-      <div style={{width:'100%',height:'100%', paddingTop: "6%" }}>
-       <Flex wrap gap="large">
-    
-       <Card hoverable
-       title="Total Assets"
-       extra={<a href="#">More</a>}
-       style={{ width: 300 }}
-     >
-       <div style={{ display: "flex", gap: "31%" }}>
-         <HomeOutlined style={{ fontSize: "2.5rem" }} />
-         <p style={{ fontSize: "1.3rem" }}>Card content</p>
-       </div>
-     </Card>
-     <Card hoverable
+      <div style={{ display: "flex",alignItems:"center",justifyContent:"center" ,gap: "2%", paddingTop: "2%" }}>
+        <Space direction="vertical" size={16}>
+          <Card
+            title="Total Assets"
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%" }}>
+              <HomeOutlined style={{ fontSize: "2.5rem" }} />
+              <p style={{ fontSize: "1.3rem" }}>Card content</p>
+            </div>
+          </Card>
+          <Card
+            title="Total Gateways"
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%" }}>
+              <TotalgatewayIcon style={{ fontSize: "2.5rem" }} />
+              <p style={{ fontSize: "1.3rem" }}>Card content</p>
+            </div>
+          </Card>
+          <Card
+            title="Total Lights"
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%" }}>
+              <TotallightsIcon style={{ fontSize: "2.5rem" }} />
+              <p style={{ fontSize: "1.3rem" }}>Card content</p>
+            </div>
+          </Card>
+        </Space>
+        <Space direction="vertical" size={16}>
+          <Card
             title="Max Load (W)"
             extra={<a href="#">More</a>}
             style={{ width: 300 }}
