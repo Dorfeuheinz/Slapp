@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "antd";
+import './Login.css';
+import { Table,Input } from "antd";
 import type { TableColumnsType } from "antd";
 import { PercentageOutlined, SettingFilled } from "@ant-design/icons";
-import { Input } from 'antd';
 import { LightControlType } from "containers/LightControl";
 import { SLCState } from "contexts/SLC";
 import dayjs from "dayjs";
@@ -85,6 +85,7 @@ const LightControl: React.FC<LightControlType> = ({ slcState, lightMode, handleS
   ];
 
   return (
+    <div className="lightcontrol-table">
     <Table
       data-theme={lightMode? "light": "luxury"}
       columns={columns}
@@ -98,6 +99,7 @@ const LightControl: React.FC<LightControlType> = ({ slcState, lightMode, handleS
       )}
       sticky={{ offsetHeader: 0 }}
     />
+    </div>
   );
 };
 

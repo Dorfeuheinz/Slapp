@@ -2,6 +2,7 @@ import { PercentageOutlined } from "@ant-design/icons";
 import { Input, Table, TableColumnsType, DatePicker } from "antd";
 import type { GetProps } from 'antd';
 import React, { useEffect, useState } from "react";
+import './Login.css';
 import { LightScheduleType } from "containers/LightSchedule";
 import { SLCState } from "contexts/SLC";
 import dayjs from "dayjs";
@@ -134,6 +135,7 @@ const LightSchedule: React.FC<LightScheduleType> = ({ slcState, lightMode, handl
 
 
   return (
+    <div className="lightcontrol-table">
     <Table
       data-theme={lightMode? "light": "luxury"}
       columns={columns}
@@ -147,6 +149,7 @@ const LightSchedule: React.FC<LightScheduleType> = ({ slcState, lightMode, handl
       )}
       sticky={{ offsetHeader: 0 }}
     />
+    </div>
   );
 };
 

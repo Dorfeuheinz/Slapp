@@ -34,7 +34,7 @@ function App() {
         <div style={{ width: '20%' }}>
           <Sidebar />
         </div>
-        <div style={{ width: '70%', height: "85%", overflowY: "scroll" }}>
+        <div style={{ width: '70%', height: "85%",position: 'relative'}}>
           <ConfigProvider
             theme={{
               token: {
