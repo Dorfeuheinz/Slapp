@@ -228,6 +228,7 @@ const Navbar: React.FC<{logout: () => void}> = ({logout}) =>  {
   const handleToggle = () => {
     globalDispatch({ type: GlobalActionTypes.LIGHT_MODE, payload: !globalState.LightMode });
 }
+
   
   return (
     <div className="navbar bg-base-100">
