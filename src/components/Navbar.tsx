@@ -112,17 +112,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Navbar: React.FC<{logout: () => void}> = ({logout}) =>  {
   const { globalState, globalDispatch } = useGlobalContext();
 
-
-
   const whitelogo = require('assets/tinymeshimg.png');
   const blacklogo = require('assets/tinymeshimg2.png');
   
 
-  const navigate = useNavigate()
-
-  const handlelogout = () =>{
-    navigate('/login')
-  }
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -166,7 +159,7 @@ const Navbar: React.FC<{logout: () => void}> = ({logout}) =>  {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    <Button onClick={handlelogout} variant="contained" color="error" style={{marginLeft:"13px"}} size="small">
+    <Button onClick={logout} variant="contained" color="error" style={{marginLeft:"13px"}} size="small">
   LOGOUT
 </Button>
     </Menu>

@@ -12,6 +12,7 @@ async def register(user: User):
     if existing_user:
         raise HTTPException(status_code=400, detail="Email already registered")
     user_data = user.model_copy()
+    # print(user_data)
     hashed_password = get_password_hash(user_data.password)
     user_dict = user_data.model_dump()
     user_dict.update({"password": hashed_password.decode('utf-8')})
