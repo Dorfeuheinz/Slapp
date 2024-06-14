@@ -137,7 +137,7 @@ const LightControl: React.FC<LightControlType> = ({ slcState, lightMode, handleS
         //   style={{ borderColor: lightMode? "silver" : "gray" }}
         //   onChange={(e) => handleBrightnessChange(record.key, parseInt(e.target.value, 10))} 
         // />
-        <IOSSlider aria-label="ios slider" defaultValue={60} valueLabelDisplay="on" />
+        <IOSSlider sx={{	display: "flex", alignItems: "center", justifyContent: "center" , right: "40px"}} aria-label="ios slider" defaultValue={60} valueLabelDisplay="on" />
       ),
     },
     {

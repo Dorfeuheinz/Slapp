@@ -174,7 +174,7 @@ const LightSchedule: React.FC<LightScheduleType> = ({ slcState, lightMode, handl
         //   style={{ borderColor: lightMode? "silver" : "gray" }}
         //   onChange={(e) => handleBrightnessChange(record.key, parseInt(e.target.value, 10))} 
         // />
-        <IOSSlider aria-label="ios slider" defaultValue={60} valueLabelDisplay="on" />
+        <IOSSlider sx={{	display: "flex", alignItems: "center", justifyContent: "center" , right: "50px"}} aria-label="ios slider" defaultValue={60} valueLabelDisplay="on" />
       ),
     },
     {
