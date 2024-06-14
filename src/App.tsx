@@ -49,12 +49,10 @@ function App() {
               },
             }}
           >
-            {globalState.SidebarOption === 'dashboard' && <Dashboard />}
             {globalState.SidebarOption === 'control' && <LightControl />}
             {globalState.SidebarOption === 'schedule' && <LightSchedule />}
             {globalState.SidebarOption === 'map' && <LeafletMap />}
             {globalState.SidebarOption === 'analytics' && <Analytics />}
-
             {globalState.SidebarOption === 'settings' && <LightSettings />}
           </ConfigProvider>
           
