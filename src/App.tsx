@@ -33,7 +33,7 @@ function App() {
       <div className="app-div">
         
         <div style={{width:"90%", height:"100%",display:"flex",flexDirection:"column",alignItems:"normal",justifyContent:"flex-start"}}>
-        <div style={{ width: '100%', height: "75%", overflowY: "scroll" }}>
+        <div style={{ width: '100%', height: "75%", position:"relative"}}>
           <ConfigProvider
             theme={{
               token: {
