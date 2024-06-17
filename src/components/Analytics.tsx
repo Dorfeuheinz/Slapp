@@ -48,8 +48,8 @@ const Analytics: React.FC = () => {
   return (
     <div style={{width:"100%",height:"100%"}}>
       <div className="flex">
-     <Box sx={{ width: '50%' }}>
-      <BarChart
+     <Box sx={{ width: '50%', backgroundColor:"transparent" }}>
+      <BarChart 
         height={400}
         series={series
           .slice(0, seriesNb)

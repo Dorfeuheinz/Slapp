@@ -297,7 +297,7 @@ const Navbar: React.FC<{logout: () => void}> = ({logout}) =>  {
           </div>
         </div>
       </div> */}
-       <Box sx={{ flexGrow: 1 }}>
+       <Box sx={{ flexGrow: 1, boxShadow: "0px 92px 269px #FFCF81", bordeRadius: "13px" }}>
       <AppBar position="static" color="transparent">
         <Toolbar>
         <div className="navbar-start">

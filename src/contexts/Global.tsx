@@ -30,7 +30,7 @@ export type State = {
 const initialState: State = {
     ModalList: [],
     LightMode: true,
-    SidebarOption: 'dashboard',
+    SidebarOption: 'analytics',
 };
 
 // Define the reducer function
