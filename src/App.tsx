@@ -29,7 +29,7 @@ function App() {
         style={{
           position: "relative",
           width: "90%",
-          height: "89%",
+          height: "89vh",
           display: "flex",
           left: "5vw",
           borderColor: globalState.LightMode? "#000000" : "#DCA54C", 
