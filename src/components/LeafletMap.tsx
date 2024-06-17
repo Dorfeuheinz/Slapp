@@ -10,16 +10,17 @@ const LeafletMap: React.FC = () => {
   const { globalState } = useGlobalContext();
 
   return (
-    // <Modal
-    //   onOk={Ok}
-    //   onCancel={Cancel}
-    //   open={visible}
-    // >
-    //   <div className="mapcontainer-div">
-    //     <div id="map" style={{ height: '100vh', width: '100vw' }}></div>
-    //   </div>
-    // </Modal>
-      <div id="map" style={{position: 'absolute',display:'flex' ,height: '90%', width: '100%', borderRadius: "15px", borderWidth: "3px", borderColor: globalState.LightMode? "#000000" : "#DCA54C", padding: 2,}}></div>
+      <div 
+        id="map" 
+        style={{
+          position: 'absolute',
+          display:'flex',
+          height: '100%', 
+          width: '100%', 
+          borderRadius: "15px", 
+          padding: 2,
+        }} 
+      />
   );
 };
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import './Login.css';
 import { Table,Input } from "antd";
 import type { TableColumnsType } from "antd";
 import { PercentageOutlined, SettingFilled } from "@ant-design/icons";
@@ -34,7 +33,7 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
   '& .MuiSlider-thumb': {
     height: 20,
     width: 20,
-    backgroundColor: '#050C9C',
+    backgroundColor: '#e572EF',
     boxShadow: '0 0 2px 0px rgba(0, 0, 0, 0.1)',
     '&:focus, &:hover, &.Mui-active': {
       boxShadow: '0px 0px 3px 1px #000',
@@ -65,12 +64,12 @@ const IOSSlider = styled(Slider)(({ theme }) => ({
   '& .MuiSlider-track': {
     border: 'none',
     height: 5,
-    background: "#3572EF",
+    background: "#e572EF",
   },
   '& .MuiSlider-rail': {
     opacity: 0.5,
     boxShadow: 'inset 0px 0px 4px -2px #000',
-    backgroundColor: '#686D76',
+    backgroundColor: '#a572EF',
   },
 }));
 
@@ -137,7 +136,13 @@ const LightControl: React.FC<LightControlType> = ({ slcState, lightMode, handleS
         //   style={{ borderColor: lightMode? "silver" : "gray" }}
         //   onChange={(e) => handleBrightnessChange(record.key, parseInt(e.target.value, 10))} 
         // />
-        <IOSSlider sx={{	display: "flex", alignItems: "center", justifyContent: "center" , right: "40px"}} aria-label="ios slider" defaultValue={60} valueLabelDisplay="on" />
+        <IOSSlider
+          sx={{	display: "flex", alignItems: "center", justifyContent: "center" , right: "40px"}}
+          aria-label="ios slider" 
+          defaultValue={60} 
+          valueLabelDisplay="on"
+          
+        />
       ),
     },
     {

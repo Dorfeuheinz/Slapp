@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Self from "components/LightSchedule";
-import { useGlobalContext } from "contexts/Global";
+import { useGlobalContext, GlobalActionTypes } from "contexts/Global";
 import { Dayjs } from "dayjs";
 import { RangeValueType } from "rc-picker/lib/PickerInput/RangePicker";
 import { SLCActionTypes, SLCState, useSLContext } from "contexts/SLC";
@@ -14,7 +14,7 @@ export type LightScheduleType = {
 }
 
 export default function LightSchedule() {
-    const { globalState } = useGlobalContext();
+    const { globalState, globalDispatch } = useGlobalContext();
     const { slcState, slcDispatch } = useSLContext();
 
     const handleScheduler = (key: number) => (value: RangeValueType<Dayjs> | null | undefined) => {
@@ -31,6 +31,10 @@ export default function LightSchedule() {
     };
     
     const handleScheduleEvent = () => {
+        globalDispatch({
+            type: GlobalActionTypes.SET_MODAL_LIST,
+            payload: ['bulkScheduler']
+        });
         console.log('onOk: Schedule red color button for bulk scheduling based upon modal inputs');
     };     
     

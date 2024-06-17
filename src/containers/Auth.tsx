@@ -28,6 +28,12 @@ export default function Auth() {
         return <Navigate to="/" replace={true} />;
     }
 
+    const clearAll = () => {
+        setUsername('');
+        setPassword('');
+        setEmail('');
+    }
+
     const handleSignup = async () => {
         try {
             const response = await axios.post('http://127.0.0.1:8000/register/', { 
@@ -39,6 +45,8 @@ export default function Auth() {
             navigate("/");
             alert('User registered successfully!');
         } catch (error) {
+            alert('Invalid credentials! Please try again');
+            clearAll();
             console.error('Signup error:', error);
         }
     };
@@ -53,6 +61,8 @@ export default function Auth() {
             alert('Logged in successfully!');
             navigate("/");
         } catch (error) {
+            alert('Invalid credentials! Please try again');
+            clearAll();
             console.error('Login error:', error);
         }
     };

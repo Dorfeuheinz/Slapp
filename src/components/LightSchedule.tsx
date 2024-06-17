@@ -2,7 +2,7 @@ import { PercentageOutlined } from "@ant-design/icons";
 import { Input, Table, TableColumnsType, DatePicker } from "antd";
 import type { GetProps } from 'antd';
 import React, { useEffect, useState } from "react";
-import './Login.css';
+
 import { LightScheduleType } from "containers/LightSchedule";
 import { SLCState } from "contexts/SLC";
 import dayjs from "dayjs";
@@ -10,6 +10,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 import Slider, { SliderThumb, SliderValueLabelProps } from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
+import BulkScheduler from "containers/BulkScheduler";
 
 type RangePickerProps = GetProps<typeof DatePicker.RangePicker>;
 
@@ -33,7 +34,7 @@ const iOSBoxShadow =
     '& .MuiSlider-thumb': {
       height: 20,
       width: 20,
-      backgroundColor: '#050C9C',
+      backgroundColor: '#e572EF',
       boxShadow: '0 0 2px 0px rgba(0, 0, 0, 0.1)',
       '&:focus, &:hover, &.Mui-active': {
         boxShadow: '0px 0px 3px 1px #000',
@@ -64,12 +65,12 @@ const iOSBoxShadow =
     '& .MuiSlider-track': {
       border: 'none',
       height: 5,
-      background: "#3572EF",
+      background: "#e572EF",
     },
     '& .MuiSlider-rail': {
       opacity: 0.5,
       boxShadow: 'inset 0px 0px 4px -2px #000',
-      backgroundColor: '#686D76',
+      backgroundColor: '#a572EF',
     },
   }));  
 
@@ -178,7 +179,7 @@ const LightSchedule: React.FC<LightScheduleType> = ({ slcState, lightMode, handl
       ),
     },
     {
-      title: <button className="btn btn-active btn-error" onClick={handleScheduleEvent}>Schedule</button>,
+      title: <BulkScheduler />,
       dataIndex: "scheduler_info",
       key: "scheduler_info",
       width: 27,
