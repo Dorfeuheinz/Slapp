@@ -25,14 +25,15 @@ function App() {
       style={{ width: "100%", height: "100vh" }}
       data-theme={globalState.LightMode ? "nord" : "luxury"}
     >
+      <Navbar />
       <div
         style={{
           position: "relative",
           width: "90%",
-          height: "89vh",
+          height: "80vh",
           display: "flex",
           left: "5vw",
-          borderColor: globalState.LightMode? "#000000" : "#DCA54C", 
+          borderColor: globalState.LightMode? "#000000" : globalState.SidebarOption === "analytics"? "transparent": "#DCA54C", 
         }}
         className="card"
       >
