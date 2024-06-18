@@ -164,18 +164,13 @@ const LightSchedule: React.FC<LightScheduleType> = ({ slcState, lightMode, handl
       key: "brightness",
       width: 25,
       render: (_, record: SLCState) => (
-        // <Input
-        //   size="large"
-        //   type="number"
-        //   placeholder="default = 0"
-        //   min="0"
-        //   max="100"
-        //   value={record.brightness}
-        //   suffix={<PercentageOutlined />}
-        //   style={{ borderColor: lightMode? "silver" : "gray" }}
-        //   onChange={(e) => handleBrightnessChange(record.key, parseInt(e.target.value, 10))} 
-        // />
-        <IOSSlider sx={{	display: "flex", alignItems: "center", justifyContent: "center" , right: "50px"}} aria-label="ios slider" defaultValue={60} valueLabelDisplay="on" />
+        <IOSSlider 
+          sx={{ display: "flex", alignItems: "center", justifyContent: "center" , right: "50px" }} 
+          aria-label="ios slider" 
+          defaultValue={60} 
+          // value={record.brightness} 
+          valueLabelDisplay="on" 
+        />
       ),
     },
     {
