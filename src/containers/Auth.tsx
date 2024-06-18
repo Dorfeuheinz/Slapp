@@ -68,6 +68,7 @@ export default function Auth() {
     };
 
     return(
+       
         <Self
             username={username} 
             setUsername={setUsername} 
