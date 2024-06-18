@@ -8,6 +8,14 @@ import { BarChart } from '@mui/x-charts/BarChart';
 import { PieChart } from '@mui/x-charts/PieChart';
 import {Button,Flex} from 'antd';
 import { LineChart } from '@mui/x-charts/LineChart';
+import { Card, Space } from "antd";
+import HomeSharpIcon from '@mui/icons-material/HomeSharp';
+import OpenWithIcon from '@mui/icons-material/OpenWith';
+import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined';
+import ElectricMeterOutlinedIcon from '@mui/icons-material/ElectricMeterOutlined';
+import ElectricBoltOutlinedIcon from '@mui/icons-material/ElectricBoltOutlined';
+import LeakAddIcon from '@mui/icons-material/LeakAdd';
+import LeakRemoveIcon from '@mui/icons-material/LeakRemove';
 
 const Analytics: React.FC = () => {
 
@@ -46,61 +54,58 @@ const Analytics: React.FC = () => {
   ];
 
   return (
-    <div style={{width:"100%",height:"100%"}}>
-      <div className="flex">
-     <Box sx={{ width: '50%', backgroundColor:"transparent" }}>
-      <BarChart 
-        height={400}
-        series={series
-          .slice(0, seriesNb)
-          .map((s) => ({ ...s, data: s.data.slice(0, itemNb) }))}
-        skipAnimation={skipAnimation}
-      />
-      {/* <FormControlLabel
-        checked={skipAnimation}
-        control={
-          <Checkbox onChange={(event) => setSkipAnimation(event.target.checked)} />
-        }
-        label="skipAnimation"
-        labelPlacement="end"
-      /> */}
-      {/* <Typography id="input-item-number" gutterBottom>
-        Number of items
-      </Typography> */}
-      {/* <Slider
-        value={itemNb}
-        onChange={handleItemNbChange}
-        valueLabelDisplay="auto"
-        min={1}
-        max={20}
-        aria-labelledby="input-item-number"
-      /> */}
-      {/* <Typography id="input-series-number" gutterBottom>
-        Number of series
-      </Typography> */}
-      {/* <Slider
-        value={seriesNb}
-        onChange={handleSeriesNbChange}
-        valueLabelDisplay="auto"
-        min={1}
-        max={10}
-        aria-labelledby="input-series-number"
-      /> */}
-    </Box>
-    <div  style={{width:"50%"}}>
-    <LineChart
-  xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
-  series={[
-    {
-      data: [2, 5.5, 2, 8.5, 1.5, 5],
-    },
-  ]}
-  height={380}
-  margin={{ left: 30, right: 30, top: 30, bottom: 30 }}
-  grid={{ vertical: true, horizontal: true }}
-/>
-    </div>
-    </div>
+    <div style={{width:"100%",height:"100%",overflowY:"scroll"}}>
+       <div style={{ display: "flex", gap: "4%",alignItems:"center",justifyContent:"center",paddingTop:"3%",paddingBottom:"2%"}}>
+        <Space direction="vertical" size={16}>
+          <Card
+            title="Total Assets"
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%" }}>
+              <HomeSharpIcon />
+              <p style={{ fontSize: "1.3rem" }}>Card content</p>
+            </div>
+          </Card>
+        </Space>
+        <Space direction="vertical" size={16}>
+          <Card
+            title="Max Load (W)"
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%" }}>
+             <ElectricMeterOutlinedIcon />
+              <p style={{ fontSize: "1.3rem" }}>Card content</p>
+            </div>
+          </Card>
+        </Space>
+        <Space direction="vertical" size={16}>
+          <Card
+            title="Active Load (W)"
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%" }}>
+            <ElectricBoltOutlinedIcon/>  
+              <p style={{ fontSize: "1.3rem" }}>Card content</p>
+            </div>
+          </Card>
+        </Space>
+        <Space direction="vertical" size={16}>
+          <Card
+            title="Total faulty assets"
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%" }}>
+              
+              <p style={{ fontSize: "1.3rem" }}>Card content</p>
+            </div>
+          </Card>
+        </Space>
+      </div>
+   
     <div style={{display:"flex"}} >
     <div  style={{width: '33%',display:"flex",alignItems:"center",justifyContent:"center"}}>
     <PieChart
