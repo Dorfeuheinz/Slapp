@@ -65,6 +65,7 @@ const Signup: React.FC<Partial<AuthType> & YoureMyType> = ({
 		setDisableSubmit(!disableSubmit);
 	};
 
+
 	return (
 	<>
 		<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -173,7 +174,7 @@ const Login: React.FC<Partial<AuthType> & YoureMyType> = ({
 		<Avatar sx={{ m: 1, bgcolor: 'success.main' }}>
 			<LockOpenIcon onClick={changePage} style={{ cursor: "pointer" }} />
 		</Avatar>
-		<Typography component="h1">
+		<Typography component="h1" >
 			Login
 		</Typography>
 		<Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -191,7 +192,7 @@ const Login: React.FC<Partial<AuthType> & YoureMyType> = ({
 				/>
 			</Grid>
 			<Grid item xs={12}>
-				<TextField
+				<TextField 
 				required
 				fullWidth
 				name="password"
@@ -270,8 +271,12 @@ const Auth: React.FC<AuthType> = ({
 		setPage(!page);
 	}
 
-  	return (
+	const video = require('assets/video5.mp4');
 
+  	return (
+   <>
+	<div className="auth-div">
+	<video className="videoAuth" src={String(video)}  muted autoPlay loop ></video>	
 	<div  style={{ height: "100vh", paddingTop: "5%" }}>
 		<ThemeProvider theme={defaultTheme}>
 			<Container component="main" maxWidth="xs">
@@ -282,6 +287,7 @@ const Auth: React.FC<AuthType> = ({
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center',
+				
 				}}
 				>
 					{page? 
@@ -315,7 +321,8 @@ const Auth: React.FC<AuthType> = ({
 			</Container>
 		</ThemeProvider>
 	</div>
-
+    </div>	
+	</>
   	);
 };
 
