@@ -9,6 +9,9 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import Container from '@mui/material/Container';
@@ -271,15 +274,22 @@ const Auth: React.FC<AuthType> = ({
 		setPage(!page);
 	}
 
+	
 	const video = require('assets/video5.mp4');
 
   	return (
    <>
 	<div className="auth-div">
 	<video className="videoAuth" src={String(video)}  muted autoPlay loop ></video>	
-	<div  style={{ height: "100vh", paddingTop: "5%" }}>
+	<React.Fragment>
+	
+	<div  style={{ height: "100vh", paddingTop: "11%" }}>
 		<ThemeProvider theme={defaultTheme}>
-			<Container component="main" maxWidth="xs">
+       <div style={{display:"flex", alignItems:'center',justifyContent:"center"}}>
+		<CardContent sx={{width:"25%",height:"60%", display:"flex", alignItems:"center", justifyContent:"center",    backdropFilter: "blur(4px)",
+    borderWidth: "thin",
+    borderRadius: "23px",
+    borderColor: "cornflowerblue"}}>
 				<CssBaseline />
 				<Box
 				sx={{
@@ -317,10 +327,12 @@ const Auth: React.FC<AuthType> = ({
 						/>
 					}
 				</Box>
-				<Copyright sx={{ mt: 5 }} />
-			</Container>
+				</CardContent>
+		</div>
 		</ThemeProvider>
 	</div>
+   
+	</React.Fragment>
     </div>	
 	</>
   	);
