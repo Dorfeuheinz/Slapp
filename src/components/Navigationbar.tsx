@@ -47,7 +47,7 @@ const Navigationbar: React.FC<{
               <span className="icon">
                 <AutoGraphTwoToneIcon style={{ fontSize: "xx-large" }} />
               </span>
-              <span className="text">Home</span>
+              <span className="text">Analytics</span>
             </a>
           </li>
           <li className="list" onClick={() => handleOption("control")}>
