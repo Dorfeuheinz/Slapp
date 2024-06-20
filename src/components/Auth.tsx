@@ -9,6 +9,9 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import Container from '@mui/material/Container';
@@ -64,6 +67,7 @@ const Signup: React.FC<Partial<AuthType> & YoureMyType> = ({
 	const disableSubmitEvent = (): void => {
 		setDisableSubmit(!disableSubmit);
 	};
+
 
 	return (
 	<>
@@ -173,7 +177,7 @@ const Login: React.FC<Partial<AuthType> & YoureMyType> = ({
 		<Avatar sx={{ m: 1, bgcolor: 'success.main' }}>
 			<LockOpenIcon onClick={changePage} style={{ cursor: "pointer" }} />
 		</Avatar>
-		<Typography component="h1">
+		<Typography component="h1" >
 			Login
 		</Typography>
 		<Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -191,7 +195,7 @@ const Login: React.FC<Partial<AuthType> & YoureMyType> = ({
 				/>
 			</Grid>
 			<Grid item xs={12}>
-				<TextField
+				<TextField 
 				required
 				fullWidth
 				name="password"
@@ -270,11 +274,22 @@ const Auth: React.FC<AuthType> = ({
 		setPage(!page);
 	}
 
-  	return (
+	
+	const video = require('assets/video5.mp4');
 
-	<div  style={{ height: "100vh", paddingTop: "5%" }}>
+  	return (
+   <>
+	<div className="auth-div">
+	<video className="videoAuth" src={String(video)}  muted autoPlay loop ></video>	
+	<React.Fragment>
+	
+	<div  style={{ height: "100vh", paddingTop: "11%" }}>
 		<ThemeProvider theme={defaultTheme}>
-			<Container component="main" maxWidth="xs">
+       <div style={{display:"flex", alignItems:'center',justifyContent:"center"}}>
+		<CardContent sx={{width:"25%",height:"60%", display:"flex", alignItems:"center", justifyContent:"center",    backdropFilter: "blur(4px)",
+    borderWidth: "thin",
+    borderRadius: "23px",
+    borderColor: "cornflowerblue"}}>
 				<CssBaseline />
 				<Box
 				sx={{
@@ -282,6 +297,7 @@ const Auth: React.FC<AuthType> = ({
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'center',
+				
 				}}
 				>
 					{page? 
@@ -311,11 +327,14 @@ const Auth: React.FC<AuthType> = ({
 						/>
 					}
 				</Box>
-				<Copyright sx={{ mt: 5 }} />
-			</Container>
+				</CardContent>
+		</div>
 		</ThemeProvider>
 	</div>
-
+   
+	</React.Fragment>
+    </div>	
+	</>
   	);
 };
 
