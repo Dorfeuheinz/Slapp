@@ -11,6 +11,7 @@ import { ConfigProvider } from "antd";
 import Analytics from "containers/Analytics";
 import { useAuth } from "contexts/Auth";
 import { Navigate } from "react-router-dom";
+import Dashboard from "containers/Dashboard";
 
 function App() {
   const { globalState } = useGlobalContext();
@@ -51,7 +52,8 @@ function App() {
               },
             },
           }}
-        >
+        > 
+          {globalState.SidebarOption === "dashboard" && <Dashboard />}
           {globalState.SidebarOption === "control" && <LightControl />}
           {globalState.SidebarOption === "schedule" && <LightSchedule />}
           {globalState.SidebarOption === "map" && <LeafletMap />}
