@@ -5,7 +5,7 @@ import ScheduleOutlinedIcon from "@mui/icons-material/ScheduleOutlined";
 import MapTwoToneIcon from "@mui/icons-material/MapTwoTone";
 import AutoGraphTwoToneIcon from "@mui/icons-material/AutoGraphTwoTone";
 import SettingsSuggestOutlinedIcon from "@mui/icons-material/SettingsSuggestOutlined";
-import HomeIcon from '@mui/icons-material/Home';
+import HomeIcon from "@mui/icons-material/Home";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 
 const colors: { [key: string]: string } = {
@@ -15,7 +15,7 @@ const colors: { [key: string]: string } = {
   map: "cyan",
   settings: "pink",
   profile: "lime",
-  dashboard: "lightblue"
+  dashboard: "lightblue",
 };
 
 const Navigationbar: React.FC<{
@@ -34,6 +34,14 @@ const Navigationbar: React.FC<{
     <div className="Navigationbar-div">
       <div className="navigation">
         <ul>
+          <li className="list active" onClick={() => handleOption("dashboard")}>
+            <a>
+              <span className="icon">
+                <HomeIcon style={{ fontSize: "xx-large" }} />
+              </span>
+              <span className="text">Home</span>
+            </a>
+          </li>
           <li className="list active" onClick={() => handleOption("analytics")}>
             <a>
               <span className="icon">
@@ -82,13 +90,7 @@ const Navigationbar: React.FC<{
               <span className="text">Profile</span>
             </a>
           </li>
-          <li className="list active" onClick={() => handleOption('dashboard')}>
-               <a >
-                <span className="icon"><HomeIcon style={{fontSize:"xx-large"}}/></span>
-                <span className="text">Home</span>
-               </a>
-            </li>
-            <div
+          <div
             className="indicator"
             style={{
               background: colors[option],
