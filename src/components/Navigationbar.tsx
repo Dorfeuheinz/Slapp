@@ -6,8 +6,10 @@ import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
 import MapTwoToneIcon from '@mui/icons-material/MapTwoTone';
 import AutoGraphTwoToneIcon from '@mui/icons-material/AutoGraphTwoTone';
 import SettingsSuggestOutlinedIcon from '@mui/icons-material/SettingsSuggestOutlined';
+import HomeIcon from '@mui/icons-material/Home';
 
 const colors: { [key: string]: string } = {
+   'dashboard': 'lightblue',
    'analytics': '#E3735E',
    'control': 'gold',
    'schedule': 'green',
@@ -32,10 +34,16 @@ const Navigationbar: React.FC<{ option: string, handleOption: (option: string) =
         <div className="Navigationbar-div">
         <div className="navigation">
          <ul>
+         <li className="list active" onClick={() => handleOption('dashboard')}>
+               <a >
+                <span className="icon"><HomeIcon style={{fontSize:"xx-large"}}/></span>
+                <span className="text">Home</span>
+               </a>
+            </li>
             <li className="list active" onClick={() => handleOption('analytics')}>
                <a >
                 <span className="icon"><AutoGraphTwoToneIcon style={{fontSize:"xx-large"}}/></span>
-                <span className="text">Home</span>
+                <span className="text">Analytics</span>
                </a>
             </li>
             <li className="list" onClick={() => handleOption('control')}>

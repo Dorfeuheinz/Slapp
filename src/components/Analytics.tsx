@@ -8,6 +8,13 @@ import { BarChart } from '@mui/x-charts/BarChart';
 import { PieChart } from '@mui/x-charts/PieChart';
 import {Button,Flex} from 'antd';
 import { LineChart } from '@mui/x-charts/LineChart';
+import { Card, Space } from "antd";
+import HomeSharpIcon from '@mui/icons-material/HomeSharp';
+
+
+import ElectricMeterOutlinedIcon from '@mui/icons-material/ElectricMeterOutlined';
+
+import LeakAddIcon from '@mui/icons-material/LeakAdd';
 
 const Analytics: React.FC = () => {
 
@@ -46,7 +53,8 @@ const Analytics: React.FC = () => {
   ];
 
   return (
-    <div style={{width:"100%",height:"100%"}}>
+    <div style={{width:"100%",height:"100%",paddingTop:"32px"}}>
+  
       <div className="flex">
      <Box sx={{ width: '50%', backgroundColor:"transparent" }}>
       <BarChart 
@@ -102,10 +110,12 @@ const Analytics: React.FC = () => {
     </div>
     </div>
     <div style={{display:"flex"}} >
-    <div  style={{width: '33%',display:"flex",alignItems:"center",justifyContent:"center"}}>
+    <div  style={{width: '33%',display:"flex",flexDirection:"column"}}>
+    <Typography sx={{display:"flex",alignItems:"center",justifyContent:"center",paddingRight:"92px"}}>TOTAL LIGHTS</Typography>
     <PieChart
       series={[
         {
+          
           data : lightdata,
           innerRadius: 20,
           cornerRadius: 10,
@@ -118,7 +128,10 @@ const Analytics: React.FC = () => {
       height={200}
     />
     </div>
-    <div  style={{width: '33%',display:"flex",alignItems:"center",justifyContent:"center"}}>
+    
+    <div  style={{width: '33%',display:"flex",flexDirection:"column"}}>
+
+    <Typography sx={{display:"flex",alignItems:"center",justifyContent:"center",paddingRight:"92px"}}>TOTAL GATEWAYS</Typography>
     <PieChart
       series={[
         {
@@ -133,7 +146,9 @@ const Analytics: React.FC = () => {
       height={200}
     />
     </div>
-    <div  style={{width: '33%',display:"flex",alignItems:"center",justifyContent:"center"}}>
+    <div  style={{width: '33%',display:"flex",flexDirection:"column"}}>
+
+    <Typography sx={{display:"flex",alignItems:"center",justifyContent:"center",paddingRight:"92px"}}>TOTAL ASSESTS</Typography>
     <PieChart
       series={[
         {
