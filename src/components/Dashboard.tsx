@@ -34,7 +34,96 @@ const Dashboard: React.FC<{ lightMode: string }> = ({ lightMode }) => {
 
   return (
     <>
-
+          <div style={{ display: "flex", gap: "4%",alignItems:"center",justifyContent:"center",paddingTop:"0.6%",paddingBottom:"0.6%"}}>
+        <Space direction="vertical" size={16}>
+          <Card
+            title="Online Gateways "
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%" }}>
+              <OpenWithIcon style={{fontSize:"43px"}}/>
+              <Gauge cornerRadius="100%" sx={(theme) => ({
+    [`& .${gaugeClasses.valueText}`]: {
+      fontSize: 30,
+    },
+    [`& .${gaugeClasses.valueArc}`]: {
+      fill: '#52b202',
+    },
+    [`& .${gaugeClasses.referenceArc}`]: {
+      fill: theme.palette.text.disabled,
+    },
+  })} width={100} height={85} value={60} />
+            </div>
+          </Card>
+        </Space>
+        <Space direction="vertical" size={16}>
+          <Card
+            title="Lights ON"
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%" }}>
+            <TipsAndUpdatesOutlinedIcon style={{fontSize:"43px"}}/>
+            <Gauge cornerRadius="100%" sx={(theme) => ({
+    [`& .${gaugeClasses.valueText}`]: {
+      fontSize: 30,
+    },
+    [`& .${gaugeClasses.valueArc}`]: {
+      fill: '#52b202',
+    },
+    [`& .${gaugeClasses.referenceArc}`]: {
+      fill: theme.palette.text.disabled,
+    },
+  })} width={100}height={85}value={60} />
+            </div>
+          </Card>
+        </Space>
+        <Space direction="vertical" size={16}>
+          <Card
+            title="Active Load (W)"
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%" }}>
+            <ElectricBoltOutlinedIcon style={{fontSize:"43px"}}/>  
+            <Gauge cornerRadius="100%" sx={(theme) => ({
+    [`& .${gaugeClasses.valueText}`]: {
+      fontSize: 30,
+    },
+    [`& .${gaugeClasses.valueArc}`]: {
+      fill: '#52b202',
+    },
+    [`& .${gaugeClasses.referenceArc}`]: {
+      fill: theme.palette.text.disabled,
+    },
+  })} width={100} height={85} value={60} />
+            </div>
+          </Card>
+        </Space>
+        <Space direction="vertical" size={16}>
+          <Card
+            title="Unresponsive Lights "
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div style={{ display: "flex", gap: "31%",alignItems:"center",justifyContent:"center" }}>
+              <LeakRemoveIcon style={{fontSize:"43px",display:"flex",alignItems:"center",justifyContent:"center",top:"5%"}}/>
+              <Gauge cornerRadius="100%" sx={(theme) => ({
+    [`& .${gaugeClasses.valueText}`]: {
+      fontSize: 30,
+    },
+    [`& .${gaugeClasses.valueArc}`]: {
+      fill: '#52b202',
+    },
+    [`& .${gaugeClasses.referenceArc}`]: {
+      fill: theme.palette.text.disabled,
+    },
+  })} width={100} height={85} value={60} />
+            </div>
+          </Card>
+        </Space>
+      </div>
     </>
   );
 };
