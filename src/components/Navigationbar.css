@@ -128,6 +128,9 @@
 .navigation ul li:nth-child(6).active ~ .indicator{
   transform: translateX(calc(70px * 5));
 }
+.navigation ul li:nth-child(7).active ~ .indicator{
+  transform: translateX(calc(70px * 6));
+}
 
 /* Auth css */
 
