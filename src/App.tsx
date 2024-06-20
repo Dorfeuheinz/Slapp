@@ -1,9 +1,8 @@
 import React from "react";
 import "App.css";
-import Navbar from "containers/Navbar";
 import Navigationbar from "containers/Navigationbar";
 import LeafletMap from "containers/LeafletMap";
-import { useGlobalContext } from "contexts/Global";
+import { GlobalActionTypes, useGlobalContext } from "contexts/Global";
 import LightControl from "containers/LightControl";
 import LightSettings from "containers/LightSettings";
 import LightSchedule from "containers/LightSchedule";
@@ -12,13 +11,20 @@ import Analytics from "containers/Analytics";
 import { useAuth } from "contexts/Auth";
 import { Navigate } from "react-router-dom";
 import Dashboard from "containers/Dashboard";
+import Profile from "containers/Profile";
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 
 function App() {
-  const { globalState } = useGlobalContext();
+  const { globalState, globalDispatch } = useGlobalContext();
   const auth = useAuth();
 
   if (!auth.access_token) {
     return <Navigate to="/auth" replace={true} />;
+  }
+
+  const handleToggle = () => {
+    globalDispatch({ type: GlobalActionTypes.LIGHT_MODE, payload: !globalState.LightMode });
   }
 
   return (
@@ -26,15 +32,14 @@ function App() {
       style={{ width: "100%", height: "100vh" }}
       data-theme={globalState.LightMode ? "nord" : "luxury"}
     >
-      <Navbar />
       <div
         style={{
           position: "relative",
           width: "90%",
-          height: "80vh",
+          height: "89vh",
           display: "flex",
           left: "5vw",
-          borderColor: globalState.LightMode? "#000000" : globalState.SidebarOption === "analytics"? "transparent": "#DCA54C", 
+          borderColor: globalState.LightMode? "#000000" : "#DCA54C", 
         }}
         className="card"
       >
@@ -59,6 +64,7 @@ function App() {
           {globalState.SidebarOption === "map" && <LeafletMap />}
           {globalState.SidebarOption === "analytics" && <Analytics />}
           {globalState.SidebarOption === "settings" && <LightSettings />}
+          {globalState.SidebarOption === "profile" && <Profile />}
         </ConfigProvider>
       </div>
       <div
@@ -72,6 +78,9 @@ function App() {
         }}
       >
         <Navigationbar />
+      </div>
+      <div onClick={handleToggle} style={{ display: "flex", paddingLeft: "96vw" }}>
+        {globalState.LightMode? <DarkModeIcon style={{ fontSize: "30px" }}/> : <LightModeIcon style={{ fontSize: "30px" }}/>}
       </div>
     </div>
   );
