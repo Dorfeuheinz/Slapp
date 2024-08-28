@@ -15,6 +15,8 @@ import Profile from "containers/Profile";
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 
+// https://github.com/Dorfeuheinz/react-boiler.git
+
 function App() {
   const { globalState, globalDispatch } = useGlobalContext();
   const auth = useAuth();
